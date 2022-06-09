@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { userInfoKey } from '../../common/globals';
 import { getCustomerInfo } from '../../libs/helper';
 import { useLogout } from '../../libs/hooks';
+import Brand from '../Brand';
 
 
 
@@ -40,14 +41,10 @@ const UserAreaHeader = () => {
     }
 
     return (
-        <div className='bg-primary-400 text-center py-3 flex justify-between'>
-            <header className="flex items-center md:px-6">
-                <div className="relative ml-3 lg:ml-0">
-                    <img src={require("../../assets/images/shell-logo.png")} alt="Shell Logo" className="w-20 md:w-6 md:h-6" />
-                </div>
-            </header>
+        <div className='bg-primary-400 text-center py-2 flex justify-between'>
+            <Brand />
             <div className="flex items-center md:py-3">
-                <div className="font-bold text-sm md:text-md"><span className="hidden md:block">CONSOLIDATED MATERIAL MANAGEMENT & TRACKING SYSTEM</span><span>(CMMTS)</span> </div>
+                <div className="font-bold text-xs md:text-xs"><span className="hidden md:block">CONSOLIDATED MATERIAL MANAGEMENT & TRACKING SYSTEM</span><span>(CMMTS)</span> </div>
             </div>
             <div className="font-bold pr-6 md:py-3 flex items-center">
                 <Link to="/profile?type=notification" className='bg-transparent border-0'>
