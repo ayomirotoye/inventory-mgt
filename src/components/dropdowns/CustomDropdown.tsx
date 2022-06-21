@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { ChevronDownIcon } from "../../assets/icons/ChevronDownIcon";
 import { converterToCustomList, hasKeys, isEmptyString, isNullOrUndefined } from "../../libs/helper";
 import PrimaryButton from "../buttons/PrimaryButton";
 import DialogModal from "../modals/DialogModal";
 
-let ChevronDownIcon = require('../../assets/images/chevron-down.svg').default;
 
-export default function CustomDropdownOptions({
+export default function CustomDropdown({
     arrOfOptions,
     onChange,
     currentLabel,
@@ -16,7 +16,7 @@ export default function CustomDropdownOptions({
     valueField,
     descriptionField,
     addNew = {},
-    border = "border-green-900 border-2"
+    border = "border-primary-400 border-2"
 }: any) {
 
     const [optionsAreVisible, setOptionsAreVisible] = useState(false);
@@ -33,11 +33,17 @@ export default function CustomDropdownOptions({
     return (
         <div className={className} key={labelTitle}>
             <div className="flex justify-start mb-3 text-sm font-bold">{labelTitle}</div>
-            <div className={`flex justify-between font-semibold items-center ${border} px-3 rounded-lg cursor-pointer `}
+            <div className={`flex justify-between bg-white font-semibold items-center ${border} px-3 rounded-lg cursor-pointer `}
                 onBlur={onClose}
                 onClick={() => setOptionsAreVisible(true)}>
-                <div className="m-3 flex-none w-14 truncate">{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? "---" : currentLabel}</div>
-                <div onClick={() => setOptionsAreVisible(true)}><img src={ChevronDownIcon} alt='' className="cursor-pointer" /></div>
+                <div className="m-3 flex flex-row truncate text-[12px] h-6">{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? <p className="object-contain">-- Category/ Products --</p> : currentLabel}</div>
+                <div className="flex-none" onClick={() => setOptionsAreVisible(true)}>
+                    <ChevronDownIcon
+                        className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+                        aria-hidden="true"
+                        stroke="#000000"
+                    />
+                </div>
             </div>
             <DialogModal
                 isModalVisible={optionsAreVisible}
@@ -60,7 +66,7 @@ export default function CustomDropdownOptions({
                 {converterToCustomList(arrOfOptions, labelField, valueField, descriptionField).map((items: any, index: number) => {
                     return <div
                         key={"order_type_list".concat("_", String(index), "_", items.value)}
-                        className='order-type-list cursor-pointer py-2 bg-gray-100 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
+                        className='order-type-list cursor-pointer py-2 bg-white-100 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
                         style={{ borderBottom: '1px solid rgba(243, 244, 246, 1)' }}
                         tabIndex={0}
                         role="option"

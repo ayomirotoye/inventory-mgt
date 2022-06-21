@@ -1,6 +1,6 @@
-export default function SearchInput({ handleClick, searchQuery, handleChange, placeholder = "Search ...", readOnly = false, buttonText="Search"}: any) {
+export default function SearchInput({widthClass="w-80", handleClick, searchQuery, handleChange, placeholder = "Search ...", readOnly = false, buttonText="Search"}: any) {
     return (
-        <div className='w-80 border'>
+        <div className={`${widthClass}`}>
             <div className="flex items-center rounded-lg pr-2 bg-white">
                 <div className='w-full'>
                     {!readOnly ? <input value={searchQuery}
@@ -17,7 +17,7 @@ export default function SearchInput({ handleClick, searchQuery, handleChange, pl
                 </div>
 
                 <div>
-                    <button onClick={handleClick} className='border-0 rounded-lg bg-green-900 text-white cursor-pointer font-bold px-3 py-2 w-full'>{buttonText}</button>
+                    <button onClick={handleClick} className='border-0 rounded-lg bg-primary-900 text-white cursor-pointer font-bold px-3 py-2 w-full'>{buttonText}</button>
                 </div>
             </div>
         </div>
