@@ -13,6 +13,9 @@ function withOpacityValue(variable) {
 module.exports = {
   content: ["./src/**/*.{html,js,tsx}"],
   theme: {
+    container: {
+      center: true,
+    },
     screens: {
       'xs': '300px',
       ...defaultTheme.screens,

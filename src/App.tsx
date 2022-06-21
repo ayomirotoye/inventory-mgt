@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { urlPaths } from "./common/urlPaths";
 
 const Login = lazy(() => import("./pages/Login"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
           <BrowserRouter basename={process.env.PUBLIC_URL} >
             <Routes>
               <Route index element={<Login />} />
+              <Route path={urlPaths.dashboard} element={<Dashboard />} />
             </Routes>
           </BrowserRouter>
         </Suspense>

@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { userInfoKey } from '../../common/globals';
 import { getCustomerInfo } from '../../libs/helper';
 import { useLogout } from '../../libs/hooks';
+import Brand from '../Brand';
+import CategoryDropdown from '../dropdowns/CategoryDropdown';
+import { CartIcon } from '../icons/CartIcon';
+import CustomInput from '../inputs/CustomInput';
+import SearchInput from '../inputs/SearchInput';
 
 
 
@@ -22,9 +27,12 @@ const dropdownLinks = [
         text: "Security"
     }
 ]
-const UserAreaHeader = () => {
+const UserAreaHeader = ({ isLoggedIn = false }) => {
     const { doLogout } = useLogout();
     let authCustomerInfo = getCustomerInfo(userInfoKey);
+    const [values, setValues] = useState({
+        query: ""
+    });
     let authCustomerFullname = authCustomerInfo?.firstName + ' ' + authCustomerInfo?.lastName;
 
     const [showHeaderMenu, setShowHeaderMenu] = useState<boolean>(false);
@@ -40,54 +48,64 @@ const UserAreaHeader = () => {
     }
 
     return (
-        <div className='bg-primary-400 text-center py-3 flex justify-between'>
-            <header className="flex items-center md:px-6">
-                <div className="relative ml-3 lg:ml-0">
-                    <img src={require("../../assets/images/shell-logo.png")} alt="Shell Logo" className="w-20 md:w-6 md:h-6" />
-                </div>
-            </header>
-            <div className="flex items-center md:py-3">
-                <div className="font-bold text-sm md:text-md"><span className="hidden md:block">CONSOLIDATED MATERIAL MANAGEMENT & TRACKING SYSTEM</span><span>(CMMTS)</span> </div>
-            </div>
-            <div className="font-bold pr-6 md:py-3 flex items-center">
-                <Link to="/profile?type=notification" className='bg-transparent border-0'>
-                    <img src={require("../../assets/icons/notification.svg").default} alt="bell" style={{ width: '2rem' }} />
-                </Link>
+        <div className='bg-primary-400 text-center py-2 flex justify-between'>
+            <Brand brandText="CMMTS"/>
+            {isLoggedIn ?
+                <div className='flex items-center md:py-3'>
+                    <div className='w-1/4'>
+                        <CategoryDropdown
+                            optionTitle="Category / Products"
+                            labelTitle=""
+                            isVisible={true}
+                            value={""}
+                            onChange={(e: any) => setValues({ ...values, [e.target.name]: e.target.value })}
+                        />
+                    </div>
+                    <SearchInput
+                        widthClass="w-3/4"
+                    />
+                </div> : <div className="flex items-center md:py-3">
+                    <div className="font-bold text-xs md:text-xs"><span className="hidden md:block">CONSOLIDATED MATERIAL MANAGEMENT & TRACKING SYSTEM</span><span>(CMMTS)</span> </div>
+                </div>}
+            {isLoggedIn ?
+                <div className="font-bold pr-6 md:py-3 flex items-center">
+                    <Link to="/profile?type=notification">
+                        <CartIcon fill="#000000" className="w-5 h-5" stroke="#000000" />
+                    </Link>
 
-                <div className="ml-3 relative" onClick={toggleHeaderMenu}>
-                    <button className="cursor-pointer bg-transparent border-0 relative flex items-center focus:outline-none">
-                        <span className="hidden md:block ml-2 font-small md:font-bold text-sm md:text-xl border-4 border-secondary-650 px-2 py-1  bg-green-100 rounded-full">
-                            {authCustomerFullname.substring(0, 2)}
-                        </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="ml-1 h-10 w-10 md:h-6 md:w-6 fill-current text-gray-700">
-                            <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"></path>
-                        </svg>
-                    </button>
+                    <div className="ml-3 relative" onClick={toggleHeaderMenu}>
+                        <button className="cursor-pointer bg-transparent border-0 relative flex items-center focus:outline-none">
+                            <span className="hidden md:block ml-2 font-small md:font-bold text-sm md:text-xl border-4 border-secondary-650 px-2 py-1  bg-green-100 rounded-full">
+                                {authCustomerFullname.substring(0, 2)}
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="ml-1 h-10 w-10 md:h-6 md:w-6 fill-current text-gray-700">
+                                <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"></path>
+                            </svg>
+                        </button>
 
-                    <div className={showHeaderMenu ? 'absolute bg-white rounded w-full border shadow-sm' : 'hidden'} style={{ top: '110%' }}>
-                        <div className='md:px-3 py-2 text-sm'>
-                            {dropdownLinks.map((items: any, index: number) => {
-                                return <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2' key={`header_links_${index}`}>
-                                    <Link to={items.linkTo} className='no-underline text-black hover:text-green-900'>
-                                        <div className='md:flex justify-center'>
-                                            <img src={items.icon} alt="" className='object-contain h-6 w-6' />
-                                            <div className='hidden md:block text-sm'> {items.text}</div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            })}
-                            <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2'>
-                                <div className='md:flex justify-center' onClick={doLogout}>
-                                    <img src={LogoutIcon} alt="" className='object-contain h-6 w-6' />
-                                    <div className='hidden md:block text-sm'> Logout</div>
+                        <div className={showHeaderMenu ? 'absolute bg-white rounded w-full border shadow-sm' : 'hidden'} style={{ top: '110%' }}>
+                            <div className='md:px-3 py-2 text-sm'>
+                                {dropdownLinks.map((items: any, index: number) => {
+                                    return <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2' key={`header_links_${index}`}>
+                                        <Link to={items.linkTo} className='no-underline text-black hover:text-green-900'>
+                                            <div className='md:flex justify-center'>
+                                                <img src={items.icon} alt="" className='object-contain h-6 w-6' />
+                                                <div className='hidden md:block text-sm'> {items.text}</div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                })}
+                                <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2'>
+                                    <div className='md:flex justify-center' onClick={doLogout}>
+                                        <img src={LogoutIcon} alt="" className='object-contain h-6 w-6' />
+                                        <div className='hidden md:block text-sm'> Logout</div>
+                                    </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> : <div></div>
+            }
         </div>
     );
 };

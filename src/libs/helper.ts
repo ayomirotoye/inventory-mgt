@@ -1,5 +1,16 @@
 import { alertTimeoutInMs, nairaFormatter } from "../common/globals";
 
+export const converterToCustomList = (obj: any, labelField: string, valueField: string, descriptionField?: string,) => {
+  const returnArr = obj?.map((items: any) => {
+    return {
+      label: items[labelField],
+      value: items[valueField],
+      description: isNullOrUndefined(descriptionField) ? "" : items[descriptionField!]
+    }
+  });
+  return returnArr;
+}
+
 export const cherryPickObject = (arrOfVals: any, objVal: any) => {
   let newObj: any = {};
   for (const [keys, values] of Object.entries(objVal)) {
