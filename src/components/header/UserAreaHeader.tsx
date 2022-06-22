@@ -73,36 +73,12 @@ const UserAreaHeader = ({ isLoggedIn = false }) => {
                         <CartIcon fill="#000000" className="w-5 h-5" stroke="#000000" />
                     </Link>
 
-                    <div className="ml-3 relative" onClick={toggleHeaderMenu}>
-                        <button className="cursor-pointer bg-transparent border-0 relative flex items-center focus:outline-none">
-                            <span className="hidden md:block ml-2 font-small md:font-bold text-sm md:text-xl border-4 border-secondary-650 px-2 py-1  bg-green-100 rounded-full">
+                    <div className="ml-3 relative">
+                        <button className="bg-transparent border-0 relative flex items-center focus:outline-none">
+                            <span className="hidden md:block ml-2 font-small md:font-bold text-sm md:text-xl border-4 border-secondary-650 px-2 py-1 bg-green-100 rounded-full">
                                 {authCustomerFullname.substring(0, 2)}
                             </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="ml-1 h-10 w-10 md:h-6 md:w-6 fill-current text-gray-700">
-                                <path d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"></path>
-                            </svg>
                         </button>
-
-                        <div className={showHeaderMenu ? 'absolute bg-white rounded w-full border shadow-sm' : 'hidden'} style={{ top: '110%' }}>
-                            <div className='md:px-3 py-2 text-sm'>
-                                {dropdownLinks.map((items: any, index: number) => {
-                                    return <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2' key={`header_links_${index}`}>
-                                        <Link to={items.linkTo} className='no-underline text-black hover:text-green-900'>
-                                            <div className='md:flex justify-center'>
-                                                <img src={items.icon} alt="" className='object-contain h-6 w-6' />
-                                                <div className='hidden md:block text-sm'> {items.text}</div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                })}
-                                <div className='hover:bg-gray-100 hover:font-bold px-1 md:pl-1 pr-2 rounded py-2'>
-                                    <div className='md:flex justify-center' onClick={doLogout}>
-                                        <img src={LogoutIcon} alt="" className='object-contain h-6 w-6' />
-                                        <div className='hidden md:block text-sm'> Logout</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div> : <div></div>
             }

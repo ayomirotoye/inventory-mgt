@@ -1,11 +1,12 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ChevronDownIcon } from '../../assets/icons/ChevronDownIcon'
 import MenuIconBars from '../../assets/icons/MenuIconBars'
 
 
 export default function MenuDropdown({ menuList }: any) {
+    const navigate = useNavigate();
     return (
         <div className="w-full text-right">
             {menuList?.menuData?.length > 0 ?
@@ -67,7 +68,13 @@ export default function MenuDropdown({ menuList }: any) {
                 </Menu>
                 :
                 <div onClick={menuList?.onClick} className='flex justify-start space-x-1 text-black cursor-pointer'>
-                    <MenuIconBars className='h-5 w-5' /> <div className='hidden sm:block truncate hover:text-white focus:text-white'>{menuList?.menuTitle}</div>
+                    <Link to={menuList?.link}>
+                        <MenuIconBars className='h-5 w-5' />
+                    </Link>
+                    <div className='hidden sm:block truncate hover:text-white focus:text-white'
+                        onClick={() => navigate(menuList?.link)}>
+                        {menuList?.menuTitle}
+                    </div>
                 </div>}
         </div>
     )
