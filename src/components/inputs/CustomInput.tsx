@@ -1,5 +1,8 @@
 import { forwardRef, useState } from "react";
-import { isNullOrUndefined, isValidMonth, isValidYear, sanitizeAsNumber } from "../../libs/helper";
+import {
+    isNullOrUndefined, isValidMonth,
+    isValidYear, sanitizeAsNumber
+} from "../../libs/helper";
 import DialogModal from "../modals/DialogModal";
 
 let InfoIcon = require('../../assets/icons/close.svg').default;

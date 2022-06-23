@@ -11,7 +11,7 @@ const Approvals = lazy(() => import("./pages/Approvals"));
 function App() {
   return (
     <div className="App">
-      <main className="border-none body-font font-flowCircular">
+      <main className="border-none body-font font-Futura">
         <Suspense fallback="loading">
           <BrowserRouter basename={process.env.PUBLIC_URL} >
             <Routes>
