@@ -1333,7 +1333,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 @font-face {
   font-family: 'Futura';
 
-  src: url("./public/fonts/futura light bt.ttf");
+  src: url("./public/fonts/futura light medium.ttf");
 }
 
 .focus-within\:bg-gray-100:focus-within {
