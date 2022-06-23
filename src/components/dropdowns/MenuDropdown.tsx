@@ -13,7 +13,6 @@ export default function MenuDropdown({ menuList }: any) {
 
                 <Menu as="div" className="">
                     <div>
-                        {/* bg-yellow-900 bg-opacity-90 */}
                         <Menu.Button className="inline-flex w-full justify-start rounded-md py-2 text-sm font-medium text-white hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                             <MenuIconBars className='h-5 w-5 text-black' /> <div className='hidden sm:block text-black hover:text-white focus:text-white'>{menuList?.menuTitle}</div>
                             <ChevronDownIcon

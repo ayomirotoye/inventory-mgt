@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import Brand from "../components/Brand";
-import PageHeader from "../components/header/PageHeader";
 import UserAreaHeader from "../components/header/UserAreaHeader";
-import SearchInput from "../components/inputs/SearchInput";
 import { useMediaQueryWrapper } from "../libs/hooks";
 import Sidebar from "./sidebar/Index";
 
