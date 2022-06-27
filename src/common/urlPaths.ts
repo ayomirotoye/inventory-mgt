@@ -7,6 +7,7 @@ export const urlPaths = {
     wells:"/products/wells",
     hotdesk:"/products/hotdesk",
     users:"/users",
+    admin:"/admin",
     report: "/report",
     logout: "/logout",
     wishlist: "/wishlist",
@@ -39,6 +40,7 @@ export const navbarItems = [
     },
     {
         menuTitle: "Product Mgt.",
+        link: urlPaths.products,
         menuData: [
             {
                 link: urlPaths.wells,
@@ -56,14 +58,14 @@ export const navbarItems = [
         menuTitle: "Admin",
         menuData: [
             {
-                link: urlPaths.users,
+                link: urlPaths.admin,
                 title: "Manage users",
-                urlMatchers: [urlPaths.users]
+                urlMatchers: [urlPaths.admin]
             },
             {
-                link: urlPaths.users,
+                link: urlPaths.products,
                 title: "Manage products",
-                urlMatchers: [urlPaths.users]
+                urlMatchers: [urlPaths.products]
             }
         ]
     }

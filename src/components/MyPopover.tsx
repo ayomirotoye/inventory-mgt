@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function MyPopover({ showAs, listItems }: any) {
 
     return (
-        <Popover className="relative mr-5">
+        <Popover className="relative -ml-5 md:-ml-0 mr-0">
             {({ open }) => (
                 <>
                     <Popover.Button
