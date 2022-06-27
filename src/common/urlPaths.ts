@@ -66,30 +66,5 @@ export const navbarItems = [
                 urlMatchers: [urlPaths.users]
             }
         ]
-    },
-    {
-        menuTitle: "Settings",
-        menuData: [
-            {
-                link: urlPaths.orders,
-                title: "My orders",
-                urlMatchers: [urlPaths.orders]
-            },
-            {
-                link: urlPaths.wishlist,
-                title: "My wishlist",
-                urlMatchers: [urlPaths.wishlist]
-            },
-            {
-                link: urlPaths.ratings,
-                title: "Ratings and Reviews",
-                urlMatchers: [urlPaths.ratings]
-            },
-            {
-                link: urlPaths.logout,
-                title: "Logout",
-                urlMatchers: [urlPaths.logout]
-            }
-        ]
-    },
+    }
 ]
