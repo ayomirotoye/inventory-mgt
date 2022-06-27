@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import colors from 'tailwindcss/colors';
-import { theme } from /*preval*/ '../../tailwind.config';
+import tailwindConfig from /*preval*/ '../../tailwind.config';
 import Brand from '../Brand';
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
 import { AvatarIcon } from '../icons/AvatarIcon';
@@ -15,44 +15,43 @@ import SearchInput from '../inputs/SearchInput';
 import MyPopover from '../MyPopover';
 
 
-
 const menuIconItems = [
     {
         name: 'Profile',
         href: "/profile",
-        icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <UserIcon className="h-5 w-5" fill={tailwindConfig.theme.extend.colors.primary[900]}
+            stroke={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
         name: 'My Wishlist',
         href: "/profile",
-        icon: <WishlistIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <WishlistIcon className="h-5 w-5" fill={tailwindConfig.theme.extend.colors.primary[900]}
+            stroke={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
         name: 'Shopping Cart',
         href: "/profile",
-        icon: <CartIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <CartIcon className="h-5 w-5" fill={tailwindConfig.theme.extend.colors.primary[900]}
+            stroke={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
         name: 'Ratings and Reviews',
         href: "/profile",
-        icon: <RatingsIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <RatingsIcon className="h-5 w-5" fill={tailwindConfig.theme.extend.colors.primary[900]}
+            stroke={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
         name: 'Items Pending Approval',
         href: "/settings",
         icon: <UserSettingsIcon className="h-5 w-5" fill={colors.white}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+            stroke={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
         name: 'Logout',
         href: "/logout",
         icon: <LogoutIcon className="h-5 w-5 mt-1"
-            stroke={theme.extend.colors.primary[900]}
-            fill={theme.extend.colors.primary[900]} strokeWidth={3} />,
+            stroke={tailwindConfig.theme.extend.colors.primary[900]}
+            fill={tailwindConfig.theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
 ]
 
