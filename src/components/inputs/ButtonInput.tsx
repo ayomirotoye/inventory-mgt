@@ -1,5 +1,6 @@
 export default function ButtonInput({
-    handleClick, searchQuery,
+    handleClick,
+    searchQuery,
     handleChange,
     placeholder = "Search ...",
     readOnly = false,

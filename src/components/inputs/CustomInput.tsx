@@ -1,5 +1,8 @@
 import { forwardRef, useState } from "react";
-import { isNullOrUndefined, isValidMonth, isValidYear, sanitizeAsNumber } from "../../libs/helper";
+import {
+    isNullOrUndefined, isValidMonth,
+    isValidYear, sanitizeAsNumber
+} from "../../libs/helper";
 import DialogModal from "../modals/DialogModal";
 
 let InfoIcon = require('../../assets/icons/close.svg').default;
@@ -37,7 +40,7 @@ const CustomInput = (
     return (
         <>
             <div className={className}>
-                <div className='text-sm font-bold mb-3 flex justify-between'>
+                <div className='text-sm font-bold mb-3 md:flex justify-between'>
                     <span className="md:hidden">{hideableLabelText} </span><span>{fixedLabelText}</span>
                     <div>{
                         hasError() ?
@@ -56,7 +59,7 @@ const CustomInput = (
                                 key={compKey ?? fixedLabelText.concat("_", String(index))}
                                 autoFocus={autoFocus}
                                 name={name}
-                                className={`focus:outline-none ${inputFontSize} text-green-900 w-full font-bold ${inputClassName}`}
+                                className={`focus:outline-none ${inputFontSize} text-primary-900 w-full font-bold ${inputClassName}`}
                                 onChange={onChange}
                                 value={defineValue(value, type)}
                                 type={type}
@@ -68,13 +71,13 @@ const CustomInput = (
                                 </div>
                             }
                         </div>
-                        : <div className="grow border-2 border-green-900 rounded-md text-left py-1 px-1 h-10">
+                        : <div className="grow border-2 border-primary-900 rounded-md text-left py-1 px-1 h-10">
                             <><input
                                 ref={ref}
                                 key={compKey ?? fixedLabelText.concat("_", String(index))}
                                 autoFocus={autoFocus}
                                 name={name}
-                                className={`align-middle focus:outline-none ${inputFontSize} text-green-900 w-full font-bold ${inputClassName}`}
+                                className={`align-middle focus:outline-none ${inputFontSize} text-primary-900 w-full font-bold ${inputClassName}`}
                                 onChange={onChange}
                                 value={ref?.current?.value}
                                 type={type}
@@ -82,9 +85,9 @@ const CustomInput = (
                                 maxLength={maxLength}
                             /></>
                         </div>
-                    : <div className="bg-gray-100 grow border border-3 align-middle border-green-900 border-solid rounded-md text-left py-1 px-1 h-10">
+                    : <div className="bg-gray-100 grow border border-3 align-middle border-primary-900 border-solid rounded-md text-left py-1 px-1 h-10">
                         <div className=''>
-                            <div className={`${inputFontSize} text-green-900 w-full font-bold`}>{value}</div>
+                            <div className={`${inputFontSize} text-primary-900 w-full font-bold`}>{value}</div>
                         </div>
                     </div>}
             </div>

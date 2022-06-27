@@ -66,7 +66,7 @@ function DialogModal({
                                         </div>
                                     </div>
                                     <div className="sm:flex-none sm:items-start">
-                                        <div className="mt-3 text-center sm:mt-0 mx-auto sm:text-left">
+                                        <div className="mt-3 sm:mt-0 sm:text-left">
                                             {children}
                                         </div>
                                     </div>

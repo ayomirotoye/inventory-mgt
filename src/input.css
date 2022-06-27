@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Flow Circular', cursive;
-    src: url("./public/fonts/FlowCircular-Regular.ttf");
+    font-family: 'Futura';
+    src: url("./public/fonts/futura light medium.ttf");
 }

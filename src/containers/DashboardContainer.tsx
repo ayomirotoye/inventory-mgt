@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import Brand from "../components/Brand";
-import PageHeader from "../components/header/PageHeader";
 import UserAreaHeader from "../components/header/UserAreaHeader";
-import SearchInput from "../components/inputs/SearchInput";
 import { useMediaQueryWrapper } from "../libs/hooks";
 import Sidebar from "./sidebar/Index";
 
@@ -23,10 +20,6 @@ export default function DashboardContainer({ children }: any) {
                     <Sidebar />
                 </div>
                 <div className={'col-span-10 px-10 py-5 bg-gray-100 overflow-y-auto bg-gray-200'}>
-                    <PageHeader
-                        title="Products"
-                        description="View and browse products"
-                    />
                     {children}
                 </div>
             </div>

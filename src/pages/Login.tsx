@@ -32,7 +32,7 @@ export default function Login() {
     }, [])
 
     return <LandingPageContainer>
-        <div className="border-4 border-secondary-500 p-5">
+        <div className="border-4 border-secondary-500 p-5 w-96">
             <form className="form px-3">
                 <div className="mb-4">
                     <CustomInput
@@ -51,10 +51,10 @@ export default function Login() {
                         }}
                     />
                 </div>
-                <PasswordInput
+                {/* <PasswordInput
                     className="mb-4"
                     onChange={(e: any) => setValues({ ...values, password: e.target.value })}
-                />
+                /> */}
 
                 {!hasKeys(formErrors) ? <div className="mb-2">
                     <PrimaryButton
@@ -63,11 +63,11 @@ export default function Login() {
                     />
                 </div> : []}
 
-                <div className="text-center">
+                {/* <div className="text-center">
                     <div className="mb-2 text-right signup-text">
                         <Link to="/forgot" className=""><strong className="text-xs font-bold text-red-500 mr-2">Forgot Password</strong></Link>
                     </div>
-                </div>
+                </div> */}
             </form>
         </div>
     </LandingPageContainer>

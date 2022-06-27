@@ -30,7 +30,7 @@ module.exports = {
         accent: withOpacityValue('--color-accent'),
       },
       fontFamily: {
-        flowCircular: ["Flow Circular", "cursive"],
+        futura: ["Futura"],
       },
     },
 

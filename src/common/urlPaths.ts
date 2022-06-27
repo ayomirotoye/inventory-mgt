@@ -1,17 +1,40 @@
 export const urlPaths = {
     home: "/",
     dashboard: "/dashboard",
+    roles: "/roles",
+    approvals: "/approvals",
     products: "/products",
     wells:"/products/wells",
     hotdesk:"/products/hotdesk",
     users:"/users",
     report: "/report",
-    settings: "/settings",
+    logout: "/logout",
+    wishlist: "/wishlist",
+    ratings: "/ratings",
+    orders: "/orders",
 }
 
 export const navbarItems = [
     {
         menuTitle: "Dashboard",
+        link: urlPaths.dashboard,
+        menuData: []
+    },
+    {
+        menuTitle: "User Mgt.",
+        link: urlPaths.users,
+        menuData: [
+        ]
+    },
+    {
+        menuTitle: "Role Mgt.",
+        link: urlPaths.roles,
+        menuData: [
+        ]
+    },
+    {
+        menuTitle: "Approvals",
+        link: urlPaths.approvals,
         menuData: []
     },
     {
@@ -20,7 +43,7 @@ export const navbarItems = [
             {
                 link: urlPaths.wells,
                 title: "Wells",
-                urlMatchers: [urlPaths.dashboard]
+                urlMatchers: [urlPaths.wells]
             },
             {
                 link: urlPaths.hotdesk,
@@ -28,25 +51,6 @@ export const navbarItems = [
                 urlMatchers: [urlPaths.hotdesk]
             }
         ]
-    },
-    {
-        menuTitle: "User Mgt.",
-        menuData: [
-            {
-                link: urlPaths.users,
-                title: "Add new",
-                urlMatchers: [urlPaths.users]
-            },
-            {
-                link: urlPaths.users,
-                title: "All",
-                urlMatchers: [urlPaths.users]
-            }
-        ]
-    },
-    {
-        menuTitle: "Approvals",
-        menuData: []
     },
     {
         menuTitle: "Admin",
@@ -60,6 +64,31 @@ export const navbarItems = [
                 link: urlPaths.users,
                 title: "Manage products",
                 urlMatchers: [urlPaths.users]
+            }
+        ]
+    },
+    {
+        menuTitle: "Settings",
+        menuData: [
+            {
+                link: urlPaths.orders,
+                title: "My orders",
+                urlMatchers: [urlPaths.orders]
+            },
+            {
+                link: urlPaths.wishlist,
+                title: "My wishlist",
+                urlMatchers: [urlPaths.wishlist]
+            },
+            {
+                link: urlPaths.ratings,
+                title: "Ratings and Reviews",
+                urlMatchers: [urlPaths.ratings]
+            },
+            {
+                link: urlPaths.logout,
+                title: "Logout",
+                urlMatchers: [urlPaths.logout]
             }
         ]
     },
