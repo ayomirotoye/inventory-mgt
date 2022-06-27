@@ -1,37 +1,65 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { userInfoKey } from '../../common/globals';
-import { getCustomerInfo } from '../../libs/helper';
+import colors from 'tailwindcss/colors';
+import { theme } from /*preval*/ '../../tailwind.config';
 import Brand from '../Brand';
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
+import { AvatarIcon } from '../icons/AvatarIcon';
 import { CartIcon } from '../icons/CartIcon';
+import { LogoutIcon } from '../icons/LogoutIcon';
+import { RatingsIcon } from '../icons/RatingsIcon';
+import { UserIcon } from '../icons/UserIcon';
+import { UserSettingsIcon } from '../icons/UserSettings';
+import { WishlistIcon } from '../icons/WishlistIcon';
 import SearchInput from '../inputs/SearchInput';
+import MyPopover from '../MyPopover';
 
 
 
-let PhoneBlackIcon = require('../../assets/icons/phone-black.svg').default;
-let SecurityIcon = require('../../assets/icons/security.svg').default;
-let LogoutIcon = require('../../assets/icons/logout.svg').default;
-
-const dropdownLinks = [
+const menuIconItems = [
     {
-        linkTo: "/learn?type=contactus",
-        icon: PhoneBlackIcon,
-        text: "Contact"
+        name: 'Profile',
+        href: "/profile",
+        icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
+            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
     },
     {
-        linkTo: "/profile?type=security",
-        icon: SecurityIcon,
-        text: "Security"
-    }
+        name: 'My Wishlist',
+        href: "/profile",
+        icon: <WishlistIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
+            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+    },
+    {
+        name: 'Shopping Cart',
+        href: "/profile",
+        icon: <CartIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
+            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+    },
+    {
+        name: 'Ratings and Reviews',
+        href: "/profile",
+        icon: <RatingsIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
+            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+    },
+    {
+        name: 'Items Pending Approval',
+        href: "/settings",
+        icon: <UserSettingsIcon className="h-5 w-5" fill={colors.white}
+            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+    },
+    {
+        name: 'Logout',
+        href: "/logout",
+        icon: <LogoutIcon className="h-5 w-5 mt-1"
+            stroke={theme.extend.colors.primary[900]}
+            fill={theme.extend.colors.primary[900]} strokeWidth={3} />,
+    },
 ]
+
 const UserAreaHeader = ({ isLoggedIn = false }) => {
-    let authCustomerInfo = getCustomerInfo(userInfoKey);
     const [values, setValues] = useState({
         query: ""
     });
-    let authCustomerFullname = authCustomerInfo?.firstName + ' ' + authCustomerInfo?.lastName;
-
     return (
         <div className='bg-primary-400 text-center py-1 flex justify-between'>
             <Brand brandText="CMMTS" />
@@ -57,9 +85,14 @@ const UserAreaHeader = ({ isLoggedIn = false }) => {
                     <Link to="/profile?type=notification">
                         <CartIcon fill="#000000" className="w-5 h-5" stroke="#000000" />
                     </Link>
-                    <span className="hidden md:block ml-2 font-small md:font-bold text-sm md:text-xl border-4 border-secondary-650 px-2 py-1 bg-green-100 rounded-full">
-                        {authCustomerFullname.substring(0, 2)}
-                    </span>
+                    <div>
+                        <MyPopover
+                            showAs={<AvatarIcon
+                                fill="red"
+                                className="h-10 w-10"
+                            />}
+                            listItems={menuIconItems} />
+                    </div>
                 </div> : []
             }
         </div>

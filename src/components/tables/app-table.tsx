@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useMemo, useState } from "react";
-import { AvatarIcon } from "../../assets/icons/AvatarIcon";
-import { BellIcon } from "../../assets/icons/BellIcon";
+import { AvatarIcon } from "../icons/AvatarIcon";
+import { BellIcon } from "../icons/BellIcon";
 import { isNullOrUndefined, capitaliseFirstLetter, hasKey, hasKeys, formatCurrencyWithDecimal, splitString } from "../../libs/helper";
 
 import Pagination from "../pagination";

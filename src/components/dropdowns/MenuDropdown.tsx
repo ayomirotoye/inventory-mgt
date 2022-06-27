@@ -1,8 +1,8 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ChevronDownIcon } from '../../assets/icons/ChevronDownIcon'
-import MenuIconBars from '../../assets/icons/MenuIconBars'
+import { ChevronDownIcon } from '../icons/ChevronDownIcon'
+import MenuIconBars from '../icons/MenuIconBars'
 
 
 export default function MenuDropdown({ menuList }: any) {

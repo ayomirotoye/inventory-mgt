@@ -1,5 +1,10 @@
 
-export function AvatarIcon({ height = "144.773", width = "144.773", className = "icons-svg", fill = "green", strokeWidth = "10" }: any) {
+export function AvatarIcon({
+    height = "144.773",
+    width = "144.773",
+    className = "icons-svg",
+    fill = "green"
+}: any) {
     return (
         <svg
             id="avatar-icon"

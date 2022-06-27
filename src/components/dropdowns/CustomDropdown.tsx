@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDownIcon } from "../../assets/icons/ChevronDownIcon";
+import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 import { converterToCustomList, hasKeys, isEmptyString, isNullOrUndefined } from "../../libs/helper";
 import PrimaryButton from "../buttons/PrimaryButton";
 import DialogModal from "../modals/DialogModal";
