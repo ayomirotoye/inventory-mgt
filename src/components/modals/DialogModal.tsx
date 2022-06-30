@@ -58,7 +58,7 @@ function DialogModal({
                             <div className={"inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ".concat(size, " w-full md:w-1/2 ")}>
                                 <div className="bg-white px-3 pt-5 pb-4 sm:p-6 sm:pb-4 mx-6 mb-4">
                                     <div className='flex justify-between border-b'>
-                                        <ViewText textValue={modalTitle} size={32} />
+                                        <ViewText textValue={modalTitle} size={"text-md"} />
                                         <div onClick={onClosed}>
                                             <span className="" aria-hidden="true">
                                                 <img src={CloseIcon} alt="" className="cursor-pointer" />

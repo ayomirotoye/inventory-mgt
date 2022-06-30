@@ -12,7 +12,7 @@ export default function Brand({ brandText }: any) {
                     className={`w-6 h-6 md:w-10 md:h-10 mr-2`} />
             </div>
             <div className="hidden md:block">
-                <ViewText textValue={brandText} />
+                <ViewText size="sm:text-sm md:text-md text-lg" textValue={brandText} />
             </div>
         </header>
     )
