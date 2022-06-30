@@ -43,7 +43,7 @@ function DialogModal({
                                 onClick={onClosed}
                                 className={"fixed inset-0 ".concat(overlayBg, " transition-opacity")} />
                         </Transition.Child>
-                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true" ref={cancelButtonRef}>
                             &#8203;
                         </span>
                         <Transition.Child

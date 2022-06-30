@@ -19,17 +19,18 @@ export default function ProductDetailModal({
                 showFooter={false}
                 size="md:w-3/4"
             >
-                <div className="grid grid-cols-2 gap-4 p-5">
-                    <div className="h-full">
-                        <div className="bg-gray-900 h-2/3 rounded-md ">
+                <div className="md:flex justify-between md:space-x-6 py-4">
+                    <div className="w-full md:w-1/2">
+                        <div className="bg-gray-900 h-64 md:h-2/3 rounded-md ">
                             <div className="text-right">
 
                             </div>
                         </div>
-                        <div className="bg-gray-900 h-1/3 rounded-md ">
+                        <div className="bg-white h-48 md:h-1/3 rounded-md border-primary-900 border-2 mt-3 ">
+
                         </div>
                     </div>
-                    <div>
+                    <div className="w-full md:w-1/2">
                         {
                             Object.entries(data).map(([key, value]: any, index: number) => {
                                 return <Fragment key={`productdetailsdata_${index}`}>

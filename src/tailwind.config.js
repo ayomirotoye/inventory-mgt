@@ -31,7 +31,7 @@ module.exports = {
       },
       fontFamily: {
         futura: ["Futura"],
-      },
+      }
     },
 
   },

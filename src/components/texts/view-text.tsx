@@ -1,7 +1,6 @@
-const ViewText = ({ size = 16, textValue }:any) => {
-    let textClass = "text-".concat(String(size));
+const ViewText = ({ size = "text-sm", textValue, color = "text-color-2" }: any) => {
     return (
-        <div className={textClass.concat(" font-bold text-color-2 mb-30")}>
+        <div className={size.concat(` font-bold ${color} mb-30`)}>
             {textValue}
         </div>
     )
