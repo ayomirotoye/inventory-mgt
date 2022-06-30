@@ -1,8 +1,15 @@
 import { Popover, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { hasKeys, isNullOrUndefined } from "../libs/helper";
 
-export default function MyPopover({ showAs, listItems }: any) {
+export default function MyPopover({
+    showContent,
+    showAs = "button",
+    panelClassName = "p-5 bg-white",
+    listItems,
+    panelWidth="w-56"
+ }: any) {
 
     return (
         <Popover className="relative -ml-5 md:-ml-0 mr-0">
@@ -10,8 +17,9 @@ export default function MyPopover({ showAs, listItems }: any) {
                 <>
                     <Popover.Button
                         className={`${open ? '' : 'text-opacity-90'} rounded-md focus:outline-none active:outline-none`}
+                        as={showAs}
                     >
-                        {showAs}
+                        {showContent}
                     </Popover.Button>
                     <Transition
                         as={Fragment}
@@ -22,17 +30,20 @@ export default function MyPopover({ showAs, listItems }: any) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                     >
-                        <Popover.Panel className="absolute z-10 mt-3 -translate-x-3/4 transform px-4 sm:px-0 w-56">
+                        <Popover.Panel className={`absolute z-[10000] mt-3 ${panelWidth} -translate-x-3/4 transform px-4 sm:px-0`}>
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                                <div className="p-5 bg-white">
+                                <div className={panelClassName}>
                                     {listItems.map((item: any, index: number) => (
                                         <React.Fragment key={`popoverlist_${index}`}>
-                                            <Link to={item.href} >
+                                            {isNullOrUndefined(item.onClick) ? <Link to={item.href} >
                                                 <div className="flex justify-start cursor-pointer my-2">
                                                     <div className="text-left mr-2">{item.icon}</div>
-                                                    <div className="font-semibold truncate">{item.name}</div>
+                                                    <div className="font-semibold truncate text-[12px]">{item.name}</div>
                                                 </div>
-                                            </Link>
+                                            </Link> : <div onClick={item.onClick} className="flex justify-start cursor-pointer my-2 items-center">
+                                                {hasKeys(item.hasIcon ?? {}) && <div className="text-left mr-2">{item.hasIcon.icon}</div>}
+                                                <div className="font-semibold truncate text-[12px]">{item.name}</div>
+                                            </div>}
                                         </React.Fragment>
                                     ))}
                                 </div>

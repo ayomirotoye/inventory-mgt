@@ -12,7 +12,7 @@ export default function DashboardContainer({ children }: any) {
     }, [isSmallScreen]);
     return (
         <>
-            <div className="sticky top-0 z-10000">
+            <div className="sticky top-0 z-[10000]">
                 <UserAreaHeader isLoggedIn={true}/>
             </div>
             <div className="grid grid-cols-12">

@@ -2,6 +2,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { urlPaths } from '../../common/urlPaths'
+import { hasKeys } from '../../libs/helper'
 import { ChevronDownIcon } from '../icons/ChevronDownIcon'
 import MenuIconBars from '../icons/MenuIconBars'
 
@@ -23,8 +24,9 @@ export default function MenuDropdown({ menuList }: any) {
 
                 <Menu as="div" className="">
                     <div>
-                        <Menu.Button className="inline-flex w-full justify-start rounded-md py-2 text-sm font-medium hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                            <MenuIconBars className='h-5 w-5 text-black' /> <div className='hidden sm:block text-black hover:text-white focus:text-white'>{menuList?.menuTitle}</div>
+                        <Menu.Button className="flex w-full justify-start items-center rounded-md py-2 text-sm font-medium hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                            {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
+                            <div className='hidden sm:block text-black hover:text-white focus:text-white ml-1'>{menuList?.menuTitle}</div>
                             <ChevronDownIcon
                                 className="ml-2 -mr-1 h-5 w-5 text-black"
                                 aria-hidden="true"
@@ -72,7 +74,7 @@ export default function MenuDropdown({ menuList }: any) {
                 :
                 <div onClick={menuList?.onClick} className={`flex justify-start space-x-1 cursor-pointer ${urlPath === menuList?.link ? "bg-primary-900 rounded-lg p-3 text-white" : "text-black"}`}>
                     <Link to={menuList?.link}>
-                        <MenuIconBars className='h-5 w-5' />
+                        {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
                     </Link>
                     <div className='hidden sm:block truncate hover:text-white focus:text-white'
                         onClick={() => navigate(menuList?.link)}>

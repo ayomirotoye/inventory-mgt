@@ -116,6 +116,28 @@ export const toUpperCase = (val: any) => {
   return strVal.length > 0 ? strVal.toUpperCase() : "";
 }
 
+export const tokenizedUpperCase = (val: any, splitter = "", upperCasePos = 0) => {
+  if (isNullOrUndefined(val)) {
+    return "";
+  }
+  let strVal = String(val);
+  if (strVal.length > 0) {
+    let arrSplit = strVal.split(splitter);
+    arrSplit[upperCasePos] = arrSplit[upperCasePos].toUpperCase();
+    return arrSplit.join(" ");
+  } else {
+    return ""
+  }
+}
+
+export const magicLoop = (count: number) => {
+  let arr: any[] = [];
+  for (let i = 0; i < count; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
 export const toLowerCase = (val: any) => {
   if (isNullOrUndefined(val)) {
     return "";

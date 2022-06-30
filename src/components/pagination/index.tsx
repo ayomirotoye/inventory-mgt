@@ -1,7 +1,13 @@
 import { isNullOrUndefined } from '../../libs/helper';
-import { usePagination, DOTS } from './usePagination';
+import { DOTS, usePagination } from './usePagination';
 
-const Pagination = (props: { onPageChange: any; totalCount: any; siblingCount?: 1 | undefined; currentPage: any; pageSize: any }) => {
+const Pagination = (props: {
+  onPageChange: any;
+  totalCount: any;
+  siblingCount?: 1 | undefined;
+  currentPage: any;
+  pageSize: any
+}) => {
 
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize } = props;
 
@@ -24,9 +30,9 @@ const Pagination = (props: { onPageChange: any; totalCount: any; siblingCount?: 
   return (
     <div>
       <div>
-        <ul className='pagination list-none font-bold flex space-x-2 justify-start cursor-pointer text-sm'>
+        <ul className='pagination list-none font-bold flex space-x-2 justify-start text-sm'>
           <li key={"pagination_previous"} style={{ backgroundColor: 'transparent' }}>
-            <button onClick={onPrevious} disabled={currentPage === 1} className="font-bold border-0 cursor-pointer" style={{ backgroundColor: 'transparent' }}>&lsaquo; Previous</button>
+            <button onClick={onPrevious} disabled={currentPage === 1} className={`font-bold border-0 ${currentPage === 1 ? "text-gray-400" : "cursor-pointer"}`}>&lsaquo; Previous</button>
           </li>
 
           {paginationRange!.map(pageNumber => {
@@ -35,14 +41,14 @@ const Pagination = (props: { onPageChange: any; totalCount: any; siblingCount?: 
             }
 
             return (
-              <li key={"pagination_".concat(pageNumber)} className={pageNumber === currentPage ? 'text-color-9 rounded-lg active' : 'text-color-9 rounded-lg'} onClick={() => onPageChange(pageNumber)}>
+              <li key={"pagination_".concat(pageNumber)} className={pageNumber === currentPage ? 'text-color-9 rounded-lg active bg-primary-400 p-3' : 'text-color-9 rounded-lg cursor-pointer'} onClick={() => onPageChange(pageNumber)}>
                 {pageNumber}
               </li>
             );
           })}
 
           <li key={"pagination_next"} style={{ backgroundColor: 'transparent' }}>
-            <button className="border-0 cursor-pointer font-bold" onClick={onNext} disabled={currentPage === lastPage} style={{ backgroundColor: 'transparent' }}>Next &rsaquo;</button>
+            <button className={`font-bold border-0 ${currentPage === lastPage ? "text-gray-400" : "cursor-pointer"}`} onClick={onNext} disabled={currentPage === lastPage}>Next &rsaquo;</button>
           </li>
         </ul>
       </div>

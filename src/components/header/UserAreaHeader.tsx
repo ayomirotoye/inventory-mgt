@@ -86,7 +86,7 @@ const UserAreaHeader = ({ isLoggedIn = false }) => {
                     </Link>
                     <div>
                         <MyPopover
-                            showAs={<AvatarIcon
+                            showContent={<AvatarIcon
                                 fill="red"
                                 className="h-10 w-10"
                             />}
