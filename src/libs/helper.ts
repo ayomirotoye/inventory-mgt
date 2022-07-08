@@ -1,5 +1,19 @@
 import { alertTimeoutInMs, nairaFormatter } from "../common/globals";
 
+export const setValue = (value: any, field = "") => {
+  let resVal = "";
+  if (isNullOrUndefined(value) || isEmptyString(value)) {
+    return "";
+  }
+  if (hasKey(value, "label")) {
+    resVal = value["label"];
+  } else {
+    resVal = hasKeys(value)
+      ? value[field] : (isObject(value) && !hasKeys(value) ? "" : value);
+  }
+  return resVal;
+}
+
 export const converterToCustomList = (obj: any, labelField: string, valueField: string, descriptionField?: string,) => {
   const returnArr = obj?.map((items: any) => {
     return {

@@ -11,12 +11,14 @@ export default function CustomDropdown({
     currentLabel,
     className = "",
     labelTitle,
+    labelClassName="flex justify-start mb-3 text-sm font-bold",
     optionTitle,
     labelField,
     valueField,
     descriptionField,
     addNew = {},
-    border = "border-primary-400 border-2"
+    border = "border-primary-400 border-2",
+    selectedOptionClassName=""
 }: any) {
 
     const [optionsAreVisible, setOptionsAreVisible] = useState(false);
@@ -32,11 +34,11 @@ export default function CustomDropdown({
 
     return (
         <div className={className} key={labelTitle}>
-            <div className="flex justify-start mb-3 text-sm font-bold">{labelTitle}</div>
+            <div className={labelClassName}>{labelTitle}</div>
             <div className={`flex justify-between bg-white font-semibold items-center ${border} px-3 rounded-lg cursor-pointer `}
                 onBlur={onClose}
                 onClick={() => setOptionsAreVisible(true)}>
-                <div className="m-3 flex flex-row truncate text-[12px] h-6">{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? <p className="object-contain">-- Category/ Products --</p> : currentLabel}</div>
+                <div className={`m-3 flex flex-row truncate ${selectedOptionClassName} h-6`}>{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? <p className="object-contain">-- choose --</p> : currentLabel}</div>
                 <div className="flex-none" onClick={() => setOptionsAreVisible(true)}>
                     <ChevronDownIcon
                         className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -65,17 +67,16 @@ export default function CustomDropdown({
 
                 {converterToCustomList(arrOfOptions, labelField, valueField, descriptionField).map((items: any, index: number) => {
                     return <div
-                        key={"order_type_list".concat("_", String(index), "_", items.value)}
-                        className='order-type-list cursor-pointer py-2 bg-white-100 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
+                        key={"custom_dropdown".concat("_", String(index), "_", items.value)}
+                        className='cursor-pointer py-2 bg-primary-100 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
                         style={{ borderBottom: '1px solid rgba(243, 244, 246, 1)' }}
                         tabIndex={0}
                         role="option"
                         onClick={() => handleChange(items.label, items.value)}
                     >
                         <div onClick={onClose}>
-                            <p className='leading-normal font-bold h-1'>{items.label}</p>
+                            <p className='leading-normal font-bold'>{items.label}</p>
                             <p className='text-xs leading-normal'>{items.description}</p>
-                            <p className='element-cover'></p>
                         </div>
                     </div>
                 })}

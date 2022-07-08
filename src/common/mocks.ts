@@ -7,12 +7,13 @@ export const productDataMock = {
     binLocation: "PHIA",
     productSapNumber: "98/345",
     productTitle: "12345",
-    ["Uom"]: "Mol/3",
+    Uom: "Mol/3",
     productDescription: "Bearing",
     price: "456.879",
     storageLocation: "PHIA",
-    ["sizes & colors"]: "Yellow",
-    ["ratings & Reviews"]: "5",
+    "sizes & colors": "Yellow",
+    "ratings & Reviews": "5",
+    quantityAvailable:20
   }
 
   export const mockData =

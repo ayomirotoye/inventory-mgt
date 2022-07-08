@@ -28,6 +28,7 @@ const CustomInput = (
         compKey,
         index,
         inputClassName = "",
+        labelClassName="",
         readOnly = false,
         error = {},
         errorModal = true
@@ -41,7 +42,7 @@ const CustomInput = (
         <>
             <div className={className}>
                 <div className='text-sm font-bold mb-3 md:flex justify-between'>
-                    <span className="md:hidden">{hideableLabelText} </span><span>{fixedLabelText}</span>
+                    <span className={`md:hidden ${labelClassName}`}>{hideableLabelText} </span><span className={labelClassName}>{fixedLabelText}</span>
                     <div>{
                         hasError() ?
                             <InfoIcon

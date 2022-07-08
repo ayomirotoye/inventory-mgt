@@ -4,11 +4,7 @@ import { CartIcon } from "../../components/icons/CartIcon";
 import { theme } from "../../tailwind.config";
 import ProductDetailModal from "./ProductDetailModal";
 
-export default function ProductCard({
-    // productName,
-    // productuantity,
-    // productDescription
-}: any) {
+export default function ProductCard() {
 
     const [showProductDetail, setShowProductDetail] = useState(false);
 
@@ -42,6 +38,7 @@ export default function ProductCard({
             {showProductDetail && <ProductDetailModal
                 showModal={showProductDetail}
                 data={productDataMock}
+                quantityAvailable={productDataMock.quantityAvailable}
                 onClosed={toggleShowProductDetail}
             />}
         </>
