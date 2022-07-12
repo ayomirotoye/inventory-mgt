@@ -1,5 +1,28 @@
 import { alertTimeoutInMs, nairaFormatter } from "../common/globals";
 
+export const imageFileExtArr = ["jpg", "jpeg", "png", "jfif", "pjpeg", "pjp", "gif", "webp"];
+export const fileExtArr = ["jpg", "jpeg", "png", "jfif", "pjpeg", "pjp", "pdf", "doc", "docx"];
+export const getBase64 = (file: Blob) => {
+  return new Promise(resolve => {
+    let baseURL: any = "";
+    // Make new FileReader
+    let reader = new FileReader();
+
+    // Convert the file to base64 text
+    reader.readAsDataURL(file);
+
+    // on reader load somthing...
+    reader.onload = () => {
+      // Make a fileInfo Object
+      baseURL = reader.result;
+      resolve(baseURL);
+    };
+  });
+};
+
+export const allowedExtensionArr = (fileKey: any) => ["signature", "utilityBill"].includes(toLowerCase(fileKey))
+  ? fileExtArr : imageFileExtArr;
+
 export const setValue = (value: any, field = "") => {
   let resVal = "";
   if (isNullOrUndefined(value) || isEmptyString(value)) {

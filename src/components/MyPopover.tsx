@@ -30,7 +30,7 @@ export default function MyPopover({
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                     >
-                        <Popover.Panel className={`absolute z-[10000] mt-3 ${panelWidth} -translate-x-3/4 transform px-4 sm:px-0`}>
+                        <Popover.Panel className={`absolute z-[100000] mt-3 ${panelWidth} -translate-x-3/4 transform px-4 sm:px-0`}>
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                 <div className={panelClassName}>
                                     {listItems.map((item: any, index: number) => (

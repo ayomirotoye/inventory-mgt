@@ -1,10 +1,13 @@
 import { useMemo, useState } from "react";
 import colors from "tailwindcss/colors";
 import { PageSize } from "../../common/globals";
-import { approvalRequestDataMock, mockData, productDataMock } from "../../common/mocks";
+import { approvalRequestDataMock, mockData } from "../../common/mocks";
+import PrimaryButton from "../../components/buttons/PrimaryButton";
 import PageHeader from "../../components/header/PageHeader";
 import { ApproveIcon } from "../../components/icons/ApproveIcon";
 import { DeniedIcon } from "../../components/icons/DeniedIcon";
+import ConfirmationModal from "../../components/modals/ConfirmationModal";
+import DialogModal from "../../components/modals/DialogModal";
 import AppTable from "../../components/tables/app-table";
 import DashboardContainer from "../../containers/DashboardContainer";
 import ApprovalRequestDetailModal from "./micro-components/ApprovalRequestDetailModal";
@@ -14,12 +17,18 @@ export default function Approvals({ }: any) {
     const [currentPage, setCurrentPage] = useState(1);
     const [tableData, setTableData] = useState(Object.assign([]));
     const [showApprovalDetail, setShowApprovalDetail] = useState(false);
+    const [showAllRequestDetail, setShowAllRequestDetail] = useState(false);
+    const [confirmBulkAction, setConfirmBulkAction] = useState(false);
 
     const handleViewApprovalDetails = (data: any) => {
-       setShowApprovalDetail(true);
+        setShowApprovalDetail(true);
     }
 
     const handleDeleteUser = () => {
+    }
+
+    const toggleAll = (isOn: boolean) => {
+        setShowAllRequestDetail(isOn);
     }
 
     useMemo(() => {
@@ -35,6 +44,7 @@ export default function Approvals({ }: any) {
                 PageSize={PageSize}
                 onPageChange={(page: number) => setCurrentPage(page)}
                 onViewDetails={handleViewApprovalDetails}
+                handleAll={toggleAll}
                 headerList={
                     {
                         sn: "S/N",
@@ -76,21 +86,58 @@ export default function Approvals({ }: any) {
     }, [currentPage, mockData])
     return (
         <DashboardContainer>
-            <div className='h-screen'>
+            <div className=''>
                 <PageHeader
                     title="Approvals"
                     description="Approve and decline requests"
                 />
+                {showAllRequestDetail && <div className="w-full flex justify-end ">
+                    <div className="grid grid-cols-2 space-x-2 my-2">
+                        <div>
+                            <PrimaryButton
+                                onClicked={() => setConfirmBulkAction(true)}
+                                height="py-2 px-3 mb-2 md:mb-0"
+                                className="w-full font-bold bg-white text-black rounded-lg border-2 border-red-900 cursor-pointer"
+                            >
+                                <span className="flex justify-between inline-block align-middle items-center">
+                                    <DeniedIcon fill={colors.red[900]} className="h-5 w-5" />
+                                    Reject All
+                                </span>
+                            </PrimaryButton>
+                        </div>
+                        <div>
+                            <PrimaryButton
+                                onClicked={() => setConfirmBulkAction(true)}
+                                height="py-2 px-3 mb-2 md:mb-0"
+                                className="w-full font-bold bg-primary-400 text-black rounded-lg border-2 border-red-900 cursor-pointer"
+                            >
+                                <span className="flex justify-between inline-block align-middle items-center">
+                                    <ApproveIcon fill={colors.green[900]} className="h-4 w-4" />
+                                    Approve All
+                                </span>
+                            </PrimaryButton>
+                        </div>
+
+                    </div>
+                </div>}
                 {tableData}
-                <div className="m-3 h-5"></div>
             </div>
-            {showApprovalDetail && 
-            <ApprovalRequestDetailModal
-            size="md:w-3/5"
-                showModal={showApprovalDetail}
-                data={approvalRequestDataMock}
-                onClosed={() => setShowApprovalDetail(!showApprovalDetail)}
-            />}
+            {showApprovalDetail &&
+                <ApprovalRequestDetailModal
+                    size="md:w-3/5"
+                    showModal={showApprovalDetail}
+                    data={approvalRequestDataMock}
+                    onClosed={() => setShowApprovalDetail(!showApprovalDetail)}
+                />}
+
+            {confirmBulkAction &&
+                <ConfirmationModal
+                    modalTitle="Are you sure ?"
+                    onClosed={()=>setConfirmBulkAction(!confirmBulkAction)}
+                    showModal={confirmBulkAction}
+                />
+            }
+
         </DashboardContainer>
     )
 }

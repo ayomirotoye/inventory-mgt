@@ -2,6 +2,7 @@ import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import PrimaryButton from '../buttons/PrimaryButton';
 import ViewText from '../texts/view-text';
+import { isNullOrUndefined } from '../../libs/helper';
 
 
 let CloseIcon = require('../../assets/icons/close.svg').default;
@@ -11,9 +12,10 @@ function DialogModal({
     onClosed,
     children,
     modalTitle,
-    showFooter = true,
+    showFooter = false,
     overlayBg = "bg-gray-500 bg-opacity-75",
-    size = "md:w-1/3"
+    size = "md:w-1/3",
+    showFooterComponent = null
 }: any) {
     const cancelButtonRef = useRef(null);
 
@@ -55,7 +57,7 @@ function DialogModal({
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            <div className={"inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ".concat(size, " w-full md:w-1/2 ")}>
+                            <div className={"inline-block align-center bg-white rounded-lg border-primary-900 border-2 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ".concat(size, " w-full md:w-1/2 ")}>
                                 <div className="bg-white px-3 pt-5 pb-4 sm:p-6 sm:pb-4 mx-6 mb-4">
                                     <div className='flex justify-between border-b'>
                                         <ViewText textValue={modalTitle} size={"text-md"} />
@@ -71,19 +73,22 @@ function DialogModal({
                                         </div>
                                     </div>
                                 </div>
-                                {showFooter && <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse mx-4">
-                                    <PrimaryButton
-                                        buttonText='Close'
-                                        onClicked={onClosed}
-                                        extraDivStyles={"w-1/4"}
-                                    />
-                                </div>}
+                                {showFooter &&
+                                    < div className="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse mx-4">
+                                        {isNullOrUndefined(showFooterComponent) ?
+                                            <PrimaryButton
+                                                buttonText='Close'
+                                                onClicked={onClosed}
+                                                extraDivStyles={"w-1/4"}
+                                            /> : showFooterComponent}
+                                    </div>
+                                }
                             </div>
                         </Transition.Child>
                     </div>
                 </Dialog>
-            </div>
-        </Transition.Root>
+            </div >
+        </Transition.Root >
     )
 }
 

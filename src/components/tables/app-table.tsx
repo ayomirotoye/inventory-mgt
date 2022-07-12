@@ -1,5 +1,6 @@
 import { Switch } from "@headlessui/react";
-import moment from "moment";
+import { format } from "date-fns";
+// import moment from "moment";
 import { useMemo, useState } from "react";
 import {
     capitaliseFirstLetter, formatCurrencyWithDecimal,
@@ -9,6 +10,7 @@ import PrimaryButton from "../buttons/PrimaryButton";
 import { AvatarIcon } from "../icons/AvatarIcon";
 import { BellIcon } from "../icons/BellIcon";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
+import SearchInput from "../inputs/SearchInput";
 import MyPopover from "../MyPopover";
 
 import Pagination from "../pagination";
@@ -41,7 +43,8 @@ export default function AppTable({
     keyField,
     needsEmphasis = {},
     isSelectable = true,
-    onViewDetails
+    onViewDetails,
+    handleAll
 }: any) {
 
     const [tableDiv, setTableDiv] = useState(Object.assign([]));
@@ -51,6 +54,11 @@ export default function AppTable({
             1: false
         })
 
+    const switchAll = (isOn: boolean) => {
+        setEnabled({ ...enabled, all: !enabled.all });
+        handleAll(isOn);
+    }
+
     useMemo(() => {
         if (isNullOrUndefined(dataList)) {
             return;
@@ -58,6 +66,9 @@ export default function AppTable({
         setTableDiv(<>
 
             <div className='bg-white rounded shadow overflow-x-auto sm:rounded mb-5 p-5'>
+                <SearchInput
+                    widthClass="w-full border-4 border-primary-900 rounded-md my-3"
+                />
                 <table className="w-full whitespace-no-wrap">
                     <thead>
                         {
@@ -68,7 +79,7 @@ export default function AppTable({
                                         name={
                                             <Switch
                                                 checked={enabled.all}
-                                                onChange={() => setEnabled({ ...enabled, all: !enabled.all })}
+                                                onChange={switchAll}
                                                 className={`${enabled.all ? 'bg-primary-600' : 'bg-gray-200'
                                                     } absolute inline-flex h-6 w-11 items-center rounded-full z-[100]`}
                                             >
@@ -97,7 +108,8 @@ export default function AppTable({
                     </thead>
                     <tbody>
                         {dataList?.map((dataItems: any, index: number) =>
-                            <tr key={index} className="hover:bg-gray-100 focus-within:bg-gray-100 h-7 cursor-pointer" onClick={() => onViewDetails(dataItems)}>
+                            <tr key={index} className="hover:bg-gray-100 focus-within:bg-gray-100 h-7 cursor-pointer"
+                                onClick={isNullOrUndefined(onViewDetails) ? () => onViewDetails(dataItems) : () => null}>
                                 <>{isSelectable && <TableData className={tdClassName}>
                                     {
                                         <Switch
@@ -169,7 +181,7 @@ export default function AppTable({
                                         }
                                         else if (["date", "createdOn", "updatedOn"].includes(key)) {
                                             return <TableData className={tdClassName} key={keyPrefix.concat(String(dataItems[keyField]), "_", dataItems[key], headerList[key], index, "_td_table_data")}>
-                                                <p className={`text-sm px-2`}>{moment(dataItems[key]).format('LLLL')}</p>
+                                                <p className={`text-sm px-2`}>{format(new Date(dataItems[key]), "LLLL")}</p>
                                             </TableData>
                                         }
                                         else {
