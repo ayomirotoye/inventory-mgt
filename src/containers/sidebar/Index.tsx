@@ -1,3 +1,4 @@
+import { theme } from "../../tailwind.config";
 import { urlPaths } from "../../common/urlPaths";
 import MenuDropdown from "../../components/dropdowns/MenuDropdown";
 import { AdminIcon } from "../../components/icons/AdminIcon";
@@ -5,7 +6,6 @@ import { DashboardIcon } from "../../components/icons/DashboardIcon";
 import { EyeIcon } from "../../components/icons/EyeIcon";
 import { ProductIcon } from "../../components/icons/ProductIcon";
 import { UserIcon } from "../../components/icons/UserIcon";
-import { theme } from "../../tailwind.config";
 import './index.scss';
 
 export const navbarItems = [
@@ -16,7 +16,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'Dashboard',
-            icon: <DashboardIcon className="h-5 w-5" fill={theme.extend.colors.red[650]} stroke={theme.extend.colors.red[650]}  />
+            icon: <DashboardIcon className="h-5 w-5" fill={theme.extend.colors.customRed} stroke={theme.extend.colors.customRed}  />
         }
     },
     {
@@ -27,7 +27,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'User mgt',
-            icon: <EyeIcon className="h-5 w-5" fill={theme.extend.colors.red[650]} />
+            icon: <EyeIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
         }
     },
     {
@@ -38,7 +38,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'Role mgt',
-            icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.red[650]} />
+            icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
         }
     },
     {
@@ -48,7 +48,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'Approvals',
-            icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.red[650]} />
+            icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
         }
     },
     {
@@ -57,7 +57,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'Product Mgt',
-            icon: <ProductIcon className="h-5 w-5" fill={theme.extend.colors.red[650]} />
+            icon: <ProductIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
         },
         menuData: [
             {
@@ -82,7 +82,7 @@ export const navbarItems = [
         hasIcon: {
             val: true,
             alt: 'Admin',
-            icon: <AdminIcon className="h-5 w-5" stroke={theme.extend.colors.red[650]} />
+            icon: <AdminIcon className="h-5 w-5" stroke={theme.extend.colors.customRed} />
         },
         menuData: [
             {

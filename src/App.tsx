@@ -6,7 +6,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const UserMgt = lazy(() => import("./pages/UserMgt"));
 const RoleMgt = lazy(() => import("./pages/RoleMgt"));
-const Approvals = lazy(() => import("./pages/Approvals"));
+const Approvals = lazy(() => import("./pages/approvals/index"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Product = lazy(() => import("./pages/product"));
 

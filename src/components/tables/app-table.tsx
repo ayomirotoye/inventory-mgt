@@ -40,7 +40,8 @@ export default function AppTable({
     tdClassName = "font-bold",
     keyField,
     needsEmphasis = {},
-    isSelectable = true
+    isSelectable = true,
+    onViewDetails
 }: any) {
 
     const [tableDiv, setTableDiv] = useState(Object.assign([]));
@@ -95,9 +96,8 @@ export default function AppTable({
 
                     </thead>
                     <tbody>
-
                         {dataList?.map((dataItems: any, index: number) =>
-                            <tr key={index} className="hover:bg-gray-100 focus-within:bg-gray-100 h-7">
+                            <tr key={index} className="hover:bg-gray-100 focus-within:bg-gray-100 h-7 cursor-pointer" onClick={() => onViewDetails(dataItems)}>
                                 <>{isSelectable && <TableData className={tdClassName}>
                                     {
                                         <Switch

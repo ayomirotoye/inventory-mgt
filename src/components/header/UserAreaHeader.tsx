@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import colors from 'tailwindcss/colors';
-import {theme} from '../../tailwind.config';
+// import {theme} from '../../../tailwind.config';
 import Brand from '../Brand';
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
 import { AvatarIcon } from '../icons/AvatarIcon';
@@ -19,39 +19,39 @@ const menuIconItems = [
     {
         name: 'Profile',
         href: "/profile",
-        icon: <UserIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <UserIcon className="h-5 w-5" fill={colors.red[900]}
+            stroke={colors.red[900]} strokeWidth={3} />,
     },
     {
         name: 'My Wishlist',
         href: "/profile",
-        icon: <WishlistIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <WishlistIcon className="h-5 w-5" fill={colors.red[900]}
+            stroke={colors.red[900]} strokeWidth={3} />,
     },
     {
         name: 'Shopping Cart',
         href: "/profile",
-        icon: <CartIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <CartIcon className="h-5 w-5" fill={colors.red[900]}
+            stroke={colors.red[900]} strokeWidth={3} />,
     },
     {
         name: 'Ratings and Reviews',
         href: "/profile",
-        icon: <RatingsIcon className="h-5 w-5" fill={theme.extend.colors.primary[900]}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+        icon: <RatingsIcon className="h-5 w-5" fill={colors.red[900]}
+            stroke={colors.red[900]} strokeWidth={3} />,
     },
     {
         name: 'Items Pending Approval',
         href: "/settings",
         icon: <UserSettingsIcon className="h-5 w-5" fill={colors.white}
-            stroke={theme.extend.colors.primary[900]} strokeWidth={3} />,
+            stroke={colors.red[900]} strokeWidth={3} />,
     },
     {
         name: 'Logout',
         href: "/logout",
         icon: <LogoutIcon className="h-5 w-5 mt-1"
-            stroke={theme.extend.colors.primary[900]}
-            fill={theme.extend.colors.primary[900]} strokeWidth={3} />,
+            stroke={colors.red[900]}
+            fill={colors.red[900]} strokeWidth={3} />,
     },
 ]
 

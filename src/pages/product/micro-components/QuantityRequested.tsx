@@ -1,6 +1,6 @@
-import { ChevronLeftIcon } from "../../components/icons/ChevronLeftIcon";
-import { ChevronRightIcon } from "../../components/icons/ChevronRightIcon";
-import ViewText from "../../components/texts/view-text";
+import { ChevronLeftIcon } from "../../../components/icons/ChevronLeftIcon";
+import { ChevronRightIcon } from "../../../components/icons/ChevronRightIcon";
+import ViewText from "../../../components/texts/view-text";
 
 export default function QuantityRequested({
     quantityAvailable=0,

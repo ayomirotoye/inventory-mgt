@@ -1,17 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
-function withOpacityValue(variable) {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${variable}))`
-    }
-    return `rgb(var(${variable}) / ${opacityValue})`
-  }
-}
-
 module.exports = {
-  content: ["./src/**/*.{html,js,tsx}"],
+  content: ["./src/**/*.{html,js,tsx}", './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
@@ -22,12 +13,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        red: {
-          650: "#db2416"
-        },
+        customRed: "#db2416",
         primary: colors.yellow,
         secondary: colors.red,
-        accent: withOpacityValue('--color-accent'),
       },
       fontFamily: {
         futura: ["Futura"],

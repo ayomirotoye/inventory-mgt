@@ -5,3 +5,4 @@ export const nairaFormatter = new Intl.NumberFormat('en-US', {
 
 export const alertTimeoutInMs = 5000;
 export const userInfoKey = "userDetails"
+export const PageSize = 10;

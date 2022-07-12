@@ -1,10 +1,10 @@
 import { Fragment, useState } from "react";
-import { uppedCasedFieldsAtSpecificLocationsForProduct } from "../../common/mocks";
-import PrimaryButton from "../../components/buttons/PrimaryButton";
-import RequestTypeDropdown from "../../components/dropdowns/RequestTypeDropdown";
-import CustomInput from "../../components/inputs/CustomInput";
-import DialogModal from "../../components/modals/DialogModal";
-import { camelCaseToSentenceCase, setValue, tokenizedUpperCase } from "../../libs/helper";
+import { uppedCasedFieldsAtSpecificLocationsForProduct } from "../../../common/mocks";
+import PrimaryButton from "../../../components/buttons/PrimaryButton";
+import RequestTypeDropdown from "../../../components/dropdowns/RequestTypeDropdown";
+import CustomInput from "../../../components/inputs/CustomInput";
+import DialogModal from "../../../components/modals/DialogModal";
+import { camelCaseToSentenceCase, setValue, tokenizedUpperCase } from "../../../libs/helper";
 import QuantityRequested from "./QuantityRequested";
 import ReviewsStar from "./ReviewsStar";
 

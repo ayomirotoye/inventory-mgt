@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { productDataMock } from "../../common/mocks";
-import { CartIcon } from "../../components/icons/CartIcon";
-import { theme } from "../../tailwind.config";
+import colors from "tailwindcss/colors";
+import { productDataMock } from "../../../common/mocks";
+import { CartIcon } from "../../../components/icons/CartIcon";
 import ProductDetailModal from "./ProductDetailModal";
 
 export default function ProductCard() {
-
     const [showProductDetail, setShowProductDetail] = useState(false);
 
     const toggleShowProductDetail = () => {
@@ -18,7 +17,7 @@ export default function ProductCard() {
                     <div className="bg-gray-900 h-3/4">
                         <div className="text-right">
                             <button className="text-pink-500 hover:text-pink-600 p-2 rounded-full bg-gray-400 z-[1000] m-3" onClick={toggleShowProductDetail}>
-                                <CartIcon fill={theme.extend.colors.secondary[900]} className="h-5 w-5" />
+                                <CartIcon fill={colors.yellow[900]} className="h-5 w-5" />
                             </button>
                         </div>
                     </div>

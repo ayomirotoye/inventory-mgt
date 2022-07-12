@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import colors from "tailwindcss/colors";
+import { PageSize } from "../common/globals";
 import { mockData } from "../common/mocks";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import PageHeader from "../components/header/PageHeader";
@@ -8,9 +10,6 @@ import CustomInput from "../components/inputs/CustomInput";
 import DialogModal from "../components/modals/DialogModal";
 import AppTable from "../components/tables/app-table";
 import DashboardContainer from "../containers/DashboardContainer";
-import { theme } from "../tailwind.config";
-
-let PageSize = 10;
 
 export default function UserMgt({ }: any) {
     const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
@@ -43,7 +42,6 @@ export default function UserMgt({ }: any) {
     }
 
     useMemo(() => {
-        console.log("currentPage:::", currentPage)
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
         let dataList = mockData?.slice(firstPageIndex, lastPageIndex);
@@ -74,7 +72,7 @@ export default function UserMgt({ }: any) {
                             hasIcon: {
                                 val: true,
                                 alt: 'Delete user',
-                                icon:<DeleteIcon fill={theme.extend.colors.red[650]} className="h-5 w-5"/>
+                                icon:<DeleteIcon fill={(colors as any).red[650]} className="h-5 w-5"/>
                             },
                         },
                         {
@@ -84,7 +82,7 @@ export default function UserMgt({ }: any) {
                             hasIcon: {
                                 val: true,
                                 alt: 'View user details',
-                                icon:<EyeIcon fill={theme.extend.colors.primary[900]} className="h-5 w-5"/>
+                                icon:<EyeIcon fill={(colors as any).red[900]} className="h-5 w-5"/>
                             },
                         }
                     ]

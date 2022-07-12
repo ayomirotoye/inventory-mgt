@@ -1,6 +1,6 @@
 import { Fragment } from "react"
-import { ChevronLeftIcon } from "../../components/icons/ChevronLeftIcon"
-import { ChevronRightIcon } from "../../components/icons/ChevronRightIcon"
+import { ChevronLeftIcon } from "../../../components/icons/ChevronLeftIcon"
+import { ChevronRightIcon } from "../../../components/icons/ChevronRightIcon"
 import ProductCard from "./ProductCard"
 
 export default function ProductSection({

@@ -1,6 +1,6 @@
 import PageHeader from "../../components/header/PageHeader";
 import DashboardContainer from "../../containers/DashboardContainer";
-import ProductSection from "../micro-components/ProductSection";
+import ProductSection from "./micro-components/ProductSection";
 
 export default function Product({ }: any) {
     return (
@@ -22,8 +22,6 @@ export default function Product({ }: any) {
                 titlebarBgColor="bg-primary-700 text-white"
                 arrowStrokeColor="white"
             />
-
-
         </DashboardContainer>
     )
 }
