@@ -1,4 +1,5 @@
 import SpinnerIcon from "../../assets/gif/spinner.gif";
+import { isNullOrUndefined } from "../../libs/helper";
 
 const PrimaryButton = ({
     onClicked,
@@ -6,7 +7,8 @@ const PrimaryButton = ({
     extraDivStyles = "w-full",
     isLoading = false,
     className = `w-full font-bold bg-primary-400 text-black rounded-lg border-0 cursor-pointer`,
-    height="py-2"
+    height="py-2",
+    children=null
 }: any) => {
     
     return (
@@ -19,7 +21,7 @@ const PrimaryButton = ({
                     <img src={SpinnerIcon}
                         alt="spinner icon"
                         className={isLoading ? "" : "hidden"} width="30" />
-                    : buttonText}</button>
+                    : !isNullOrUndefined(children) ? children : buttonText}</button>
         </div >
     );
 }

@@ -1,5 +1,42 @@
 import { alertTimeoutInMs, nairaFormatter } from "../common/globals";
 
+export const imageFileExtArr = ["jpg", "jpeg", "png", "jfif", "pjpeg", "pjp", "gif", "webp"];
+export const fileExtArr = ["jpg", "jpeg", "png", "jfif", "pjpeg", "pjp", "pdf", "doc", "docx"];
+export const getBase64 = (file: Blob) => {
+  return new Promise(resolve => {
+    let baseURL: any = "";
+    // Make new FileReader
+    let reader = new FileReader();
+
+    // Convert the file to base64 text
+    reader.readAsDataURL(file);
+
+    // on reader load somthing...
+    reader.onload = () => {
+      // Make a fileInfo Object
+      baseURL = reader.result;
+      resolve(baseURL);
+    };
+  });
+};
+
+export const allowedExtensionArr = (fileKey: any) => ["signature", "utilityBill"].includes(toLowerCase(fileKey))
+  ? fileExtArr : imageFileExtArr;
+
+export const setValue = (value: any, field = "") => {
+  let resVal = "";
+  if (isNullOrUndefined(value) || isEmptyString(value)) {
+    return "";
+  }
+  if (hasKey(value, "label")) {
+    resVal = value["label"];
+  } else {
+    resVal = hasKeys(value)
+      ? value[field] : (isObject(value) && !hasKeys(value) ? "" : value);
+  }
+  return resVal;
+}
+
 export const converterToCustomList = (obj: any, labelField: string, valueField: string, descriptionField?: string,) => {
   const returnArr = obj?.map((items: any) => {
     return {
@@ -114,6 +151,28 @@ export const toUpperCase = (val: any) => {
   }
   let strVal = String(val);
   return strVal.length > 0 ? strVal.toUpperCase() : "";
+}
+
+export const tokenizedUpperCase = (val: any, splitter = "", upperCasePos = 0) => {
+  if (isNullOrUndefined(val)) {
+    return "";
+  }
+  let strVal = String(val);
+  if (strVal.length > 0) {
+    let arrSplit = strVal.split(splitter);
+    arrSplit[upperCasePos] = arrSplit[upperCasePos].toUpperCase();
+    return arrSplit.join(" ");
+  } else {
+    return ""
+  }
+}
+
+export const magicLoop = (count: number) => {
+  let arr: any[] = [];
+  for (let i = 0; i < count; i++) {
+    arr.push(i);
+  }
+  return arr;
 }
 
 export const toLowerCase = (val: any) => {

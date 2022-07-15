@@ -3,7 +3,7 @@ import DashboardContainer from "../containers/DashboardContainer";
 export default function Dashboard({ }: any) {
     return (
         <DashboardContainer>
-            Main page
+             <div className='h-screen'>Dashboard</div>
         </DashboardContainer>
     )
 }

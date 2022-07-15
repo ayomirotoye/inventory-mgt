@@ -1,20 +1,32 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Fragment, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { urlPaths } from '../../common/urlPaths'
+import { hasKeys } from '../../libs/helper'
 import { ChevronDownIcon } from '../icons/ChevronDownIcon'
 import MenuIconBars from '../icons/MenuIconBars'
 
 
 export default function MenuDropdown({ menuList }: any) {
     const navigate = useNavigate();
+    const [urlPath, setURLPath] = useState(urlPaths.dashboard);
+
+    let routePath = useLocation().pathname;
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        setURLPath(routePath);
+    }, [routePath])
     return (
         <div className="w-full text-right">
+
             {menuList?.menuData?.length > 0 ?
 
                 <Menu as="div" className="">
                     <div>
-                        <Menu.Button className="inline-flex w-full justify-start rounded-md py-2 text-sm font-medium text-white hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                            <MenuIconBars className='h-5 w-5 text-black' /> <div className='hidden sm:block text-black hover:text-white focus:text-white'>{menuList?.menuTitle}</div>
+                        <Menu.Button className="flex w-full justify-start items-center rounded-md py-2 text-sm font-medium hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                            {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
+                            <div className='hidden sm:block text-black hover:text-white focus:text-white ml-1'>{menuList?.menuTitle}</div>
                             <ChevronDownIcon
                                 className="ml-2 -mr-1 h-5 w-5 text-black"
                                 aria-hidden="true"
@@ -42,17 +54,11 @@ export default function MenuDropdown({ menuList }: any) {
                                                         className={`${active ? 'bg-primary-500 text-white' : 'text-gray-900'
                                                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                                     >
-                                                        {active ? (
-                                                            <MenuIconBars
-                                                                fill='#357266'
-                                                                stroke='#357266'
-                                                                className='h-5 w-5' />
-                                                        ) : (
-                                                            <MenuIconBars
-                                                                fill='#357266'
-                                                                stroke='#357266'
-                                                                className='h-5 w-5' />
-                                                        )}
+                                                        <MenuIconBars
+                                                            fill='black'
+                                                            stroke='black'
+                                                            className='h-5 w-5' />
+
                                                         <span className={`truncate ${active ? "text-white" : ""}`}> {items.title}</span>
                                                     </button>
                                                 </Link>
@@ -66,9 +72,9 @@ export default function MenuDropdown({ menuList }: any) {
                     </Transition>
                 </Menu>
                 :
-                <div onClick={menuList?.onClick} className='flex justify-start space-x-1 text-black cursor-pointer'>
+                <div onClick={menuList?.onClick} className={`flex justify-start space-x-1 cursor-pointer ${urlPath === menuList?.link ? "bg-primary-900 rounded-lg p-3 text-white" : "text-black"}`}>
                     <Link to={menuList?.link}>
-                        <MenuIconBars className='h-5 w-5' />
+                        {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
                     </Link>
                     <div className='hidden sm:block truncate hover:text-white focus:text-white'
                         onClick={() => navigate(menuList?.link)}>
