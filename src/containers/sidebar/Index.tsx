@@ -11,11 +11,11 @@ import "./index.scss";
 export const navbarItems = [
   {
     menuTitle: "Home",
-    link: urlPaths.products.index,
+    link: urlPaths.home,
     menuData: [],
     hasIcon: {
       val: true,
-      alt: "Dashboard",
+      alt: "Home",
       icon: (
         <DashboardIcon
           className="h-5 w-5"
@@ -75,6 +75,19 @@ export const navbarItems = [
     hasIcon: {
       val: true,
       alt: "Approvals",
+      icon: (
+        <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+
+  {
+    menuTitle: "HotDesk Officer",
+    link: urlPaths.hotdesk,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "HotDesk Officer",
       icon: (
         <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
       ),

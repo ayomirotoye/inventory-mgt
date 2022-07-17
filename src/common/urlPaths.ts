@@ -1,7 +1,7 @@
 
 
 export const urlPaths = {
-    home: "/",
+    home: "/home",
     dashboard: "/dashboard",
     roles: "/roles",
     approvals: "/approvals",

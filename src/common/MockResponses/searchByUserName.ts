@@ -1,0 +1,31 @@
+export const response = {
+  userData: {
+    description: "Ishola, Oluwasegun N SNBO-ITZ/CN",
+    displayName: "Ishola, Oluwasegun N SNBO-PTIZ/C/ND",
+    distinguishedName:
+      "CN=NGOISC,OU=User Accounts Vista,OU=User Accounts,OU=User Directory,DC=africa-me,DC=shell,DC=com",
+    emailAddress: "Oluwasegun.Ishola@shell.com",
+    name: "NGOISC",
+    employeeId: null,
+    givenName: "Oluwasegun",
+    middleName: null,
+    title: "Software Engineer",
+    surname: "Ishola",
+    samAccountName: "Oluwasegun.Ishola",
+    photoData: null,
+    ou: "SNBO",
+    location: "Lagos",
+    company: "Shell Nigeria Business Operations Ltd.",
+    businessCategory: "IT",
+    physicalDeliveryOfficeName: "LAG",
+    telephoneNumber: "+2348070262382",
+    whenCreated: "2021-06-18T17:24:47",
+    whenChanged: "2022-07-12T15:10:33",
+    mail: "Oluwasegun.Ishola@shell.com",
+    employmentType: "S",
+    manager:
+      "CN=WACCH0,OU=User Accounts Vista,OU=User Accounts,OU=User Directory,DC=africa-me,DC=shell,DC=com",
+    managerCN: "WACCH0",
+    shellGGDDepartmentNumber: "PTIZ/C/ND",
+  },
+};

@@ -1,69 +1,61 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { AiOutlinePlus } from "react-icons/ai";
+import colors from "tailwindcss/colors";
+import { mockDataProduct } from "../common/mocks";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import PageHeader from "../components/header/PageHeader";
+import { DeleteIcon } from "../components/icons/DeleteIcon";
+import { EyeIcon } from "../components/icons/EyeIcon";
 import CustomInput from "../components/inputs/CustomInput";
 import DialogModal from "../components/modals/DialogModal";
 import AppTable from "../components/tables/app-table";
 import DashboardContainer from "../containers/DashboardContainer";
+import { theme } from "../tailwind.config";
+import NewProductModal from "../pages/product/micro-components/NewProductModal";
+import ProductSection from "../pages/product/micro-components/ProductSection";
 
-export default function HotdeskTeam({}: any) {
-  const [showAddNewProductModal, setShowAddNewProductModal] = useState(false);
+let PageSize = 10;
+
+export default function UserMgt({}: any) {
+  const [showAddNewProduct, setShowAddNewProduct] = useState(false);
+
+  const addNewProduct = () => {
+    setShowAddNewProduct(true);
+  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tableData, setTableData] = useState(Object.assign([]));
+
   const [formErrors] = useState<any>({});
   const [values, setValues] = useState({
-    productName: "",
-    productDescription: "",
-    productUniqueId: "",
-    category: "",
+    lastName: "",
+    firstName: "",
+    username: "",
+    userType: "",
     assetLocation: "",
-    partNumber: "",
-    wareHouseLocation: "",
-    binLocation: "",
-    productImage: "",
-    quantity: "",
-    inventoryType: "",
-    cost: "",
-    expiryDate: "",
+    purpose: "",
   });
 
-  const handleViewProductDetails = () => {};
+  const handleViewUserDetails = () => {};
 
-  const handleDeleteProduct = () => {};
+  const handleDeleteUser = () => {};
 
-  const handleAddNewProduct = () => {
-    setShowAddNewProductModal(true);
-  };
-  const handleCloseAddNewProductModal = () => {
-    setShowAddNewProductModal(false);
+  const handleCloseAddNewUserModal = () => {
+    setShowAddNewProduct(false);
   };
 
-  return (
-    <DashboardContainer>
-      <PageHeader
-        title="HotdeskTeam (Product Management)"
-        description="Manage product and product details"
-      />
-      <div className="flex justify-end">
-        <PrimaryButton
-          buttonText="Add New"
-          extraDivStyles="w-full md:w-1/6 my-2"
-          onClicked={handleAddNewProduct}
-        />
-      </div>
+  useMemo(() => {
+    console.log("currentPage:::", currentPage);
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    let dataList = mockDataProduct?.slice(firstPageIndex, lastPageIndex);
+
+    setTableData(
       <AppTable
-        dataList={[
-          {
-            id: "1",
-            ProductName: "Segun",
-            productUniqueId: "segundeyemi",
-            category: "Asset category",
-            assetLocation: "Asset category",
-            wareHouseLocation: "Asset category",
-            quantity: "Asset category",
-            cost: "Asset category",
-            expiryDate: "Asset category",
-            action: "",
-          },
-        ]}
+        dataList={dataList}
+        currentPage={currentPage}
+        totalCount={mockDataProduct.length}
+        PageSize={PageSize}
+        onPageChange={(page: number) => setCurrentPage(page)}
         headerList={{
           id: "S/N",
           ProductName: "Product Name",
@@ -78,232 +70,72 @@ export default function HotdeskTeam({}: any) {
         }}
         actionButtonList={[
           {
-            handleClick: handleDeleteProduct,
+            handleClick: handleDeleteUser,
             actionText: "Delete",
             btnClassName:
               "cursor-pointer bg-gray-300 text-red-900 rounded-lg border-0 py-3 px-5 font-bold focus:shadow-outline",
+            hasIcon: {
+              val: true,
+              alt: "Delete user",
+              icon: (
+                <DeleteIcon
+                  fill={theme.extend.colors.red[650]}
+                  className="h-5 w-5"
+                />
+              ),
+            },
           },
           {
-            handleClick: handleViewProductDetails,
+            handleClick: handleViewUserDetails,
             actionText: "View",
             btnClassName:
               "cursor-pointer text-primary-900 rounded-lg border-2 border-primary-900 py-3 px-5 font-bold focus:shadow-outline",
+            hasIcon: {
+              val: true,
+              alt: "View user details",
+              icon: (
+                <EyeIcon
+                  fill={theme.extend.colors.primary[900]}
+                  className="h-5 w-5"
+                />
+              ),
+            },
           },
         ]}
       />
+    );
+  }, [currentPage, mockDataProduct]);
 
-      {showAddNewProductModal && (
-        <DialogModal
-          showFooter={false}
-          size="md:w-1/2"
-          isModalVisible={showAddNewProductModal}
-          modalTitle="Add New Product"
-          onClosed={handleCloseAddNewProductModal}
-        >
-          <div className="my-3">
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.productName}
-                hideableLabelText=""
-                fixedLabelText="Product Name"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="productName"
-                error={{
-                  hasError: formErrors.productName,
-                  message: formErrors.productName,
-                }}
+  return (
+    <DashboardContainer>
+      <PageHeader
+        title="Product management"
+        description="Manage product and product details"
+        addNew={
+          <PrimaryButton
+            onClicked={addNewProduct}
+            height="py-2 px-3 mb-2 md:mb-0"
+            className="w-full font-bold bg-white text-black rounded-lg border-2 border-red-900 cursor-pointer"
+          >
+            <span className="flex justify-between inline-block align-middle items-center">
+              <AiOutlinePlus
+                fill={colors.yellow[400]}
+                strokeWidth={10}
+                className="h-5 w-5"
               />
-              <CustomInput
-                value={values.productDescription}
-                hideableLabelText=""
-                fixedLabelText="product Description"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="productDescription"
-                error={{
-                  hasError: formErrors.productDescription,
-                  message: formErrors.productDescription,
-                }}
-              />
-            </div>
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.productUniqueId}
-                hideableLabelText=""
-                fixedLabelText="Product UniqueId"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="productUniqueId"
-                error={{
-                  hasError: formErrors.productUniqueId,
-                  message: formErrors.productUniqueId,
-                }}
-              />
-              <CustomInput
-                value={values.category}
-                hideableLabelText=""
-                fixedLabelText="Category"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="category"
-                error={{
-                  hasError: formErrors.category,
-                  message: formErrors.category,
-                }}
-              />
-            </div>
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.assetLocation}
-                hideableLabelText=""
-                fixedLabelText="Asset location"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="assetLocation"
-                error={{
-                  hasError: formErrors.assetLocation,
-                  message: formErrors.assetLocation,
-                }}
-              />
+              Add New Product
+            </span>
+          </PrimaryButton>
+        }
+      />
 
-              <CustomInput
-                value={values.partNumber}
-                hideableLabelText=""
-                fixedLabelText="Part Number"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="partNumber"
-                error={{
-                  hasError: formErrors.partNumber,
-                  message: formErrors.purpartNumberpose,
-                }}
-              />
-            </div>
+      {tableData}
 
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.wareHouseLocation}
-                hideableLabelText=""
-                fixedLabelText="WareHouse Location"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="wareHouseLocation"
-                error={{
-                  hasError: formErrors.wareHouseLocation,
-                  message: formErrors.wareHouseLocation,
-                }}
-              />
-
-              <CustomInput
-                value={values.binLocation}
-                hideableLabelText=""
-                fixedLabelText="Bin Location"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="binLocation"
-                error={{
-                  hasError: formErrors.binLocation,
-                  message: formErrors.binLocation,
-                }}
-              />
-            </div>
-
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.productImage}
-                hideableLabelText=""
-                fixedLabelText="Product Image"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="productImage"
-                error={{
-                  hasError: formErrors.productImage,
-                  message: formErrors.productImage,
-                }}
-              />
-              <CustomInput
-                value={values.quantity}
-                hideableLabelText=""
-                fixedLabelText="Product Image"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="quantity"
-                error={{
-                  hasError: formErrors.quantity,
-                  message: formErrors.quantity,
-                }}
-              />
-            </div>
-
-            <div className="mb-2 md:flex md:justify-between md:space-x-2">
-              <CustomInput
-                value={values.cost}
-                hideableLabelText=""
-                fixedLabelText="Cost"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="cost"
-                error={{
-                  hasError: formErrors.cost,
-                  message: formErrors.cost,
-                }}
-              />
-              <CustomInput
-                value={values.expiryDate}
-                hideableLabelText=""
-                fixedLabelText="Expiry Date"
-                onChange={(e: any) => {
-                  setValues({ ...values, [e.target.name]: e.target.value });
-                }}
-                type="text"
-                inputFontSize="md:text-sm"
-                name="expiryDate"
-                error={{
-                  hasError: formErrors.expiryDate,
-                  message: formErrors.expiryDate,
-                }}
-              />
-            </div>
-
-            <div>
-              <PrimaryButton buttonText="Submit" height="py-4" />
-            </div>
-          </div>
-        </DialogModal>
+      {showAddNewProduct && (
+        <NewProductModal
+          showAddProductModal={showAddNewProduct}
+          onClosed={() => setShowAddNewProduct(false)}
+        />
       )}
     </DashboardContainer>
   );

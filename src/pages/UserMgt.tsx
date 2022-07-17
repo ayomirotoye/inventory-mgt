@@ -31,6 +31,8 @@ export default function UserMgt({}: any) {
 
   const handleDeleteUser = () => {};
 
+  const handlDeactivateUser = () => {};
+
   const handleAddNewUser = () => {
     setShowAddNewUserModal(true);
   };
@@ -87,6 +89,22 @@ export default function UserMgt({}: any) {
               icon: (
                 <EyeIcon
                   fill={theme.extend.colors.primary[900]}
+                  className="h-5 w-5"
+                />
+              ),
+            },
+          },
+          {
+            handleClick: handlDeactivateUser,
+            actionText: "Activate/Deactivate",
+            btnClassName:
+              "cursor-pointer bg-gray-300 text-red-900 rounded-lg border-0 py-3 px-5 font-bold focus:shadow-outline",
+            hasIcon: {
+              val: true,
+              alt: "Disable user",
+              icon: (
+                <EyeIcon
+                  fill={theme.extend.colors.red[650]}
                   className="h-5 w-5"
                 />
               ),
