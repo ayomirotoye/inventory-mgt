@@ -1,18 +1,9 @@
 export const response = {
-  id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  name: "string",
-  normalizedName: "string",
-  concurrencyStamp: "string",
-  menus: [
-    {
-      id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      roleId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      roles: [null],
-      parentMenuId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      menus: [null],
-      menuName: "string",
-    },
-  ],
-  createdDate: "2022-07-17T20:00:47.067Z",
-  lastModifiedDate: "2022-07-17T20:00:47.067Z",
+  data: {
+    id: "d3a6f22c-0681-45e5-8513-065c4582da80",
+    name: "Requestor",
+    menus: [],
+  },
+  message: "Success.",
+  responseCode: 200,
 };

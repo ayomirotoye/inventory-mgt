@@ -65,7 +65,7 @@ const menuIconItems = [
   },
   {
     name: "Items Pending Approval",
-    href: "/approvals",
+    href: "/itemspendingapproval",
     icon: (
       <UserSettingsIcon
         className="h-5 w-5"

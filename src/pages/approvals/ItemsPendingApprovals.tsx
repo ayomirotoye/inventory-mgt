@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
 import colors from "tailwindcss/colors";
 import { PageSize } from "../../common/globals";
-import { approvalRequestDataMock, ApprovalMockData } from "../../common/mocks";
+import {
+  approvalRequestDataMock,
+  ItemsPendingApprovalMockData,
+} from "../../common/mocks";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import PageHeader from "../../components/header/PageHeader";
 import { ApproveIcon } from "../../components/icons/ApproveIcon";
@@ -32,13 +35,16 @@ export default function PendingApprovals({}: any) {
   useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    let dataList = ApprovalMockData?.slice(firstPageIndex, lastPageIndex);
+    let dataList = ItemsPendingApprovalMockData?.slice(
+      firstPageIndex,
+      lastPageIndex
+    );
 
     setTableData(
       <AppTable
         dataList={dataList}
         currentPage={currentPage}
-        totalCount={ApprovalMockData.length}
+        totalCount={ItemsPendingApprovalMockData.length}
         PageSize={PageSize}
         onPageChange={(page: number) => setCurrentPage(page)}
         onViewDetails={handleViewApprovalDetails}
@@ -48,7 +54,7 @@ export default function PendingApprovals({}: any) {
           productUniqueNumber: "Product Unique Number",
           binLocation: "BIN Location",
           Uom: "UOM",
-          storageLocation: "Storage Location",
+          status: "Status",
           warehouseLocation: "Warehouse Location",
           orderId: "Order Id",
           orderDate: "Order Date",
@@ -82,7 +88,7 @@ export default function PendingApprovals({}: any) {
         ]}
       />
     );
-  }, [currentPage, ApprovalMockData]);
+  }, [currentPage, ItemsPendingApprovalMockData]);
   return (
     <DashboardContainer>
       <div className="">

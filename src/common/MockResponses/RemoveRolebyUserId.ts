@@ -1,5 +1,5 @@
 export const response = {
   data: null,
-  message: "Menu removed from Requestor",
+  message: "Role  removed from Karl",
   responseCode: 200,
 };

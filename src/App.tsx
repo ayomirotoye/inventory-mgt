@@ -15,6 +15,9 @@ const HotdeskTeam = lazy(() => import("./pages/HotdeskTeam"));
 const WarehouseOfficer = lazy(() => import("./pages/approvals/index"));
 const InventoryOfficer = lazy(() => import("./pages/approvals/index"));
 const UpdateApprovalRoute = lazy(() => import("./pages/UpdateApprovalRoute"));
+const ItemsPendingApproval = lazy(
+  () => import("./pages/approvals/ItemsPendingApprovals")
+);
 
 function App() {
   return (
@@ -35,6 +38,10 @@ function App() {
               <Route path={urlPaths.hotdesk} element={<HotdeskTeam />} />
               <Route path={urlPaths.warehouse} element={<WarehouseOfficer />} />
               <Route path={urlPaths.inventory} element={<InventoryOfficer />} />
+              <Route
+                path={urlPaths.itemspendingapproval}
+                element={<ItemsPendingApproval />}
+              />
             </Routes>
           </BrowserRouter>
         </Suspense>

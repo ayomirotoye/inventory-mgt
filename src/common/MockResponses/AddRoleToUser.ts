@@ -1,5 +1,5 @@
 export const response = {
   data: null,
-  message: "Menu removed from Requestor",
+  message: "Role Requestor added to Oluwasegun",
   responseCode: 200,
 };
