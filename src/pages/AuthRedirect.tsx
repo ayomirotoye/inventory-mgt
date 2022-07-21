@@ -33,7 +33,6 @@ const AuthRedirect = () => {
   const redirectUser = (loginRequest: any) => {
 
     callUserLoginApi(loginRequest).then((response) => {
-      console.log("lOGIN rESPONSE:::", response);
       if (isSuccessful(response.responseCode)) {
         dispatch({
           type: "LOGIN_USER",

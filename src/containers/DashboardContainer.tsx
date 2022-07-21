@@ -16,7 +16,7 @@ export default function DashboardContainer({ children }: any) {
     }, [])
     return (
         <>
-            <div className="sticky top-0 z-[10000]">
+            <div className="sticky top-0 z-[10003]">
                 <UserAreaHeader isLoggedIn={true}/>
             </div>
             <div className="grid grid-cols-12">

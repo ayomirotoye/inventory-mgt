@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Routes } from "react-router-dom";
 import LoaderContainer from "../containers/LoaderContainer";
 import { doAuthentication, refreshToken } from "../utils/tokenUtils";
 
@@ -29,11 +28,11 @@ export default function ProtectedRouteWrapper({ children }: any) {
             setIsLoading(false);
             setPageContent([]);
         }
-    }, [])
+    }, [children])
 
     return (
         <>
-            {isLoading ? <LoaderContainer /> :  pageContent }
+            {isLoading ? <LoaderContainer /> : pageContent}
         </>
     )
 }

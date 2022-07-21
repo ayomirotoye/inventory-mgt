@@ -5,7 +5,7 @@ import colors from "tailwindcss/colors"
 export default function Alert({ message, type = "success", t }: any) {
 
     return (
-        <div className={`bg-white px-10 py-3 shadow-md border-4 ${type==="success"? "border-green-900": "border-red-900"} rounded-md ${t.visible ? 'animate-enter' : 'animate-leave'}`}
+        <div className={`bg-white px-10 py-3 z-[300000000] shadow-md border-4 ${type==="success"? "border-green-900": "border-red-900"} rounded-md ${t.visible ? 'animate-enter' : 'animate-leave'}`}
         >
             <div className="flex justify-between items-center space-x-2">
                 <>

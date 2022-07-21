@@ -81,7 +81,7 @@ export default function AppTable({
                                                 checked={enabled.all}
                                                 onChange={switchAll}
                                                 className={`${enabled.all ? 'bg-primary-600' : 'bg-gray-200'
-                                                    } absolute inline-flex h-6 w-11 items-center rounded-full z-[100]`}
+                                                    } absolute inline-flex h-6 w-11 items-center rounded-full z-[999]`}
                                             >
                                                 <span className="sr-only"></span>
                                                 <span
@@ -116,7 +116,7 @@ export default function AppTable({
                                             checked={enabled[String(index)]}
                                             onChange={() => setEnabled({ ...enabled, [String(index)]: !enabled[String(index)] })}
                                             className={`${enabled[String(index)] || enabled.all ? 'bg-primary-600' : 'bg-gray-200'
-                                                } relative inline-flex h-6 w-11 items-center rounded-full z-[100]`}
+                                                } relative inline-flex h-6 w-11 items-center rounded-full z-[999]`}
                                         >
                                             <span className="sr-only"></span>
                                             <span

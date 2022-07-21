@@ -2,7 +2,7 @@ import { isNullOrUndefined, responseCodes, isObject, isEmptyString } from "../li
 
 
 let finalErrRes = {
-  statusCode: "",
+  responseCode: "",
   data: Object.assign({}),
   hasError: true,
   message: ""
@@ -17,7 +17,7 @@ export const handleMyErrors = (err: any) => {
     ) {
       finalErrRes = {
         ...finalErrRes,
-        statusCode: responseCodes.BAD_REQUEST,
+        responseCode: responseCodes.BAD_REQUEST,
       };
     } else if (
       !isNullOrUndefined(errRes) &&
@@ -25,7 +25,7 @@ export const handleMyErrors = (err: any) => {
     ) {
       finalErrRes = {
         ...finalErrRes,
-        statusCode: responseCodes.UNAUTHORIZED,
+        responseCode: responseCodes.UNAUTHORIZED,
         message: "Unauthorized",
       };
       throw new Error(String(finalErrRes));
@@ -35,7 +35,7 @@ export const handleMyErrors = (err: any) => {
     ) {
       finalErrRes = {
         ...finalErrRes,
-        statusCode: responseCodes.UNAUTHORIZED,
+        responseCode: responseCodes.UNAUTHORIZED,
         message: "Unauthorized",
       };
       throw new Error(String(finalErrRes));
@@ -43,12 +43,12 @@ export const handleMyErrors = (err: any) => {
       finalErrRes = {
         ...finalErrRes,
         message: "Unauthorized",
-        statusCode: responseCodes.UNAUTHORIZED,
+        responseCode: responseCodes.UNAUTHORIZED,
       };
     } else if (err.message?.includes("404")) {
       finalErrRes = {
         ...finalErrRes,
-        statusCode: responseCodes.PAGE_NOT_FOUND,
+        responseCode: responseCodes.PAGE_NOT_FOUND,
         message: "No response from requested service as it is not found",
       };
     } else if (!isNullOrUndefined(err?.response) && isObject(err?.response)) {
@@ -60,13 +60,13 @@ export const handleMyErrors = (err: any) => {
       if (errResDataString.includes("service unavailable")) {
         finalErrRes = {
           ...finalErrRes,
-          statusCode: responseCodes.SERVICE_UNAVAILABLE,
+          responseCode: responseCodes.SERVICE_UNAVAILABLE,
           message: "Service unavailable",
         };
       } else
         finalErrRes = {
           ...finalErrRes,
-          statusCode: responseCodes.BAD_REQUEST,
+          responseCode: responseCodes.BAD_REQUEST,
           message:
             isNullOrUndefined(errResDataString) ||
               errResDataString?.toLowerCase().includes("bad request")
@@ -76,14 +76,14 @@ export const handleMyErrors = (err: any) => {
     } else {
       finalErrRes = {
         ...finalErrRes,
-        statusCode: responseCodes.FAILED,
+        responseCode: responseCodes.FAILED,
         message: err.message,
       };
     }
   } catch (err) {
     finalErrRes = {
       ...finalErrRes,
-      statusCode: responseCodes.FAILED,
+      responseCode: responseCodes.FAILED,
     };
     console.log("ERROR OCCURRED WHILE PARSING ERRORS=>", err);
   }
