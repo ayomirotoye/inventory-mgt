@@ -1,20 +1,20 @@
 import { useState } from "react";
-import "./style.css"
+import "./style.css";
 
 export default function AutoComplete({
     widthClass = "w-80",
-    handleClick,
-    handleChange,
     placeholder = "Search ...",
     readOnly = false,
     suggestions,
-    buttonText = "Search" }: any) {
+    onChangeInput,
+    input
+}: any) {
     const [active, setActive] = useState(0);
     const [filtered, setFiltered] = useState([]);
     const [isShow, setIsShow] = useState(false);
-    const [input, setInput] = useState("");
 
     const onChange = (e: any) => {
+        console.log("sugees:::", suggestions)
         const input = e.currentTarget.value;
         const newFilteredSuggestions = suggestions.filter(
             (suggestion: string) =>
@@ -23,19 +23,22 @@ export default function AutoComplete({
         setActive(0);
         setFiltered(newFilteredSuggestions);
         setIsShow(true);
-        setInput(e.currentTarget.value)
+        onChangeInput(e.currentTarget.value)
+        // setInput(e.currentTarget.value)
     };
+
     const onClick = (e: any) => {
         setActive(0);
         setFiltered([]);
         setIsShow(false);
-        setInput(e.currentTarget.innerText)
+        onChangeInput(e.currentTarget.innerText)
     };
+
     const onKeyDown = (e: any) => {
         if (e.keyCode === 13) { // enter key
             setActive(0);
             setIsShow(false);
-            setInput(filtered[active])
+            onChangeInput(filtered[active])
         }
         else if (e.keyCode === 38) { // up arrow
             return (active === 0) ? null : setActive(active - 1);
@@ -44,6 +47,8 @@ export default function AutoComplete({
             return (active - 1 === filtered.length) ? null : setActive(active + 1);
         }
     };
+
+
     const renderAutocomplete = () => {
         if (isShow && input) {
             if (filtered.length) {
@@ -92,10 +97,6 @@ export default function AutoComplete({
                             className="bg-white text w-full focus:outline-none px-3 py-3 rounded text-gray-900 focus:bg-white focus:ring-indigo-500"
                             placeholder={placeholder} />
                     }
-                </div>
-
-                <div>
-                    <button onClick={handleClick} className='border-0 rounded-lg bg-primary-900 text-white cursor-pointer font-bold px-3 py-2 w-full'>{buttonText}</button>
                 </div>
             </div>
             <div className="z-10000">
