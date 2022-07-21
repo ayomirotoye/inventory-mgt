@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { login } from "../state/actions/apiCall";
+import { urlPaths } from "../common/urlPaths";
 
 const AuthRedirect = () => {
   let navigate = useNavigate();
@@ -31,8 +33,9 @@ const AuthRedirect = () => {
       });
 
       //Make a call to the second endpoint
-
-      navigate("/");
+      login(dispatch, { userId, validationToken });
+      navigate(urlPaths.dashboard);
+      // navigate("/");
     }
   };
 

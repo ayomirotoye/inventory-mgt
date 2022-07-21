@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { urlPaths } from "./common/urlPaths";
+import { hot } from "react-hot-loader";
 
 const Login = lazy(() => import("./pages/Login"));
 const Home = lazy(() => import("./pages/Home"));
@@ -14,7 +15,9 @@ const AuthRedirect = lazy(() => import("./pages/AuthRedirect"));
 const HotdeskTeam = lazy(() => import("./pages/HotdeskTeam"));
 const WarehouseOfficer = lazy(() => import("./pages/approvals/index"));
 const InventoryOfficer = lazy(() => import("./pages/approvals/index"));
+const UploadProduct = lazy(() => import("./pages/product/UploadProduct"));
 const UpdateApprovalRoute = lazy(() => import("./pages/UpdateApprovalRoute"));
+const DataMgt = lazy(() => import("./pages/DataMgt"));
 const ItemsPendingApproval = lazy(
   () => import("./pages/approvals/ItemsPendingApprovals")
 );
@@ -38,6 +41,8 @@ function App() {
               <Route path={urlPaths.hotdesk} element={<HotdeskTeam />} />
               <Route path={urlPaths.warehouse} element={<WarehouseOfficer />} />
               <Route path={urlPaths.inventory} element={<InventoryOfficer />} />
+              <Route path={urlPaths.data} element={<DataMgt />} />
+              <Route path={urlPaths.upload} element={<UploadProduct />} />
               <Route
                 path={urlPaths.itemspendingapproval}
                 element={<ItemsPendingApproval />}
@@ -50,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default hot(module)(App);

@@ -9,6 +9,7 @@ export const urlPaths = {
     details: "/product/details",
   },
   wells: "/products/wells",
+  upload: "/products/upload",
   hotdesk: "/products/hotdesk",
   users: "/users",
   admin: "/admin",
@@ -20,6 +21,7 @@ export const urlPaths = {
   auth: "/auth",
   /////
   loan: "/loanproduct",
+  data: "/datamgt",
   warehouse: "/warehouseofficer",
   inventory: "/inventory",
   unclaimed: "/unclaimedproduct",

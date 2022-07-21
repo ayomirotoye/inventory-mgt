@@ -44,6 +44,19 @@ export const navbarItems = [
   },
 
   {
+    menuTitle: "Data Mgt.",
+    link: urlPaths.data,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "Data mgt",
+      icon: (
+        <EyeIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+
+  {
     menuTitle: "User Mgt.",
     link: urlPaths.users,
     menuData: [],
@@ -157,6 +170,11 @@ export const navbarItems = [
         link: urlPaths.products.index,
         title: "listing",
         urlMatchers: [urlPaths.products.index],
+      },
+      {
+        link: urlPaths.upload,
+        title: "upload",
+        urlMatchers: [urlPaths.upload],
       },
       {
         link: urlPaths.wells,
