@@ -8,8 +8,8 @@ export default function MyPopover({
     showAs = "button",
     panelClassName = "p-5 bg-white",
     listItems,
-    panelWidth="w-56"
- }: any) {
+    panelWidth = "w-56"
+}: any) {
 
     return (
         <Popover className="relative -ml-5 md:-ml-0 mr-0">
@@ -35,15 +35,17 @@ export default function MyPopover({
                                 <div className={panelClassName}>
                                     {listItems.map((item: any, index: number) => (
                                         <React.Fragment key={`popoverlist_${index}`}>
-                                            {isNullOrUndefined(item.onClick) ? <Link to={item.href} >
-                                                <div className="flex justify-start cursor-pointer my-2">
-                                                    <div className="text-left mr-2">{item.icon}</div>
+                                            {isNullOrUndefined(item.onClick) ?
+                                                <Link to={item.href}>
+                                                    <div className="flex justify-start cursor-pointer my-2">
+                                                        <div className="text-left mr-2">{item.icon}</div>
+                                                        <div className="font-semibold truncate text-[12px]">{item.name}</div>
+                                                    </div>
+                                                </Link> :
+                                                <div onClick={item.onClick} className="flex justify-start cursor-pointer my-2 items-center">
+                                                    {hasKeys(item.hasIcon ?? {}) && <div className="text-left mr-2">{item.hasIcon.icon}</div>}
                                                     <div className="font-semibold truncate text-[12px]">{item.name}</div>
-                                                </div>
-                                            </Link> : <div onClick={item.onClick} className="flex justify-start cursor-pointer my-2 items-center">
-                                                {hasKeys(item.hasIcon ?? {}) && <div className="text-left mr-2">{item.hasIcon.icon}</div>}
-                                                <div className="font-semibold truncate text-[12px]">{item.name}</div>
-                                            </div>}
+                                                </div>}
                                         </React.Fragment>
                                     ))}
                                 </div>

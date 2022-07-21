@@ -1,12 +1,12 @@
 export const urlPaths = {
   home: "/home",
   dashboard: "/dashboard",
-  roles: "/roles",
-  approvals: "/approvals",
-  profile: "/profile",
+  roles: "/dashboard/roles",
+  approvals: "/dashboard/approvals",
+  profile: "/dashboard/profile",
   products: {
-    index: "/product",
-    details: "/product/details",
+    index: "/dashboard/product",
+    details: "/dashboard/product/details",
   },
   wells: "/products/wells",
   hotdesk: "/products/hotdesk",
@@ -18,7 +18,6 @@ export const urlPaths = {
   ratings: "/ratings",
   orders: "/orders",
   auth: "/auth",
-  /////
   loan: "/loanproduct",
   warehouse: "/warehouseofficer",
   inventory: "/inventory",

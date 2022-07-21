@@ -10,6 +10,10 @@ export default function DashboardContainer({ children }: any) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         setScreenSize(isSmallScreen);
     }, [isSmallScreen]);
+
+    useEffect(()=>{
+        
+    }, [])
     return (
         <>
             <div className="sticky top-0 z-[10000]">

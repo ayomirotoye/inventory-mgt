@@ -1,4 +1,9 @@
-export default function SearchInput({widthClass="w-80", handleClick, searchQuery, handleChange, placeholder = "Search ...", readOnly = false, buttonText="Search"}: any) {
+export default function SearchInput({ widthClass = "w-80",
+    handleClick, searchQuery,
+    handleChange,
+    placeholder = "Search ...", 
+    readOnly = false, 
+    buttonText = "Search" }: any) {
     return (
         <div className={`${widthClass}`}>
             <div className="flex items-center rounded-lg pr-2 bg-white">

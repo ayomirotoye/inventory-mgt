@@ -10,9 +10,10 @@ export default function Login() {
   const [formErrors] = useState<any>({});
 
   function loginUser() {
-    navigate(urlPaths.dashboard);
-    //window.location.href =
-    // "http://lag-s-04372:8086/SSOAuth/getToken?redirectURL=http%3A%2F%2Flocalhost:3000/auth&requestToken=fjasjfahfja";
+    // window.location.href =
+    //   "http://lag-s-04372:8086/SSOAuth/getToken?redirectURL=http%3A%2F%2Flocalhost:3000/auth&requestToken=fjasjfahfja";
+
+    window.location.href = `${process.env.REACT_APP_PUBLIC_API_APP_URL}/auth?validationToken=fjasjfahfja&userId=oluwasegun.ishola`;
   }
 
   useEffect(() => {
