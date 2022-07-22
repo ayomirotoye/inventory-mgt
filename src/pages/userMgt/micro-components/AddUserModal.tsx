@@ -48,9 +48,8 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
         setIsUserPresent(false);
         callGetUserByUsernameApi(userDetail.username).then((response: any) => {
             setIsSearching(false);
-            if (hasKeys(response)) {
+            if (hasKeys(response.userData)) {
                 setIsUserPresent(true);
-                console.log("keyss:::", hasKeys(userDetail.userRole));
                 const userDetailsUpdated = { ...userDetail, ...response };
                 setUserDetail(userDetailsUpdated);
             }
@@ -95,9 +94,8 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
             if (isSuccessful(response?.responseCode)) {
                 toast.custom((t) => <Alert type="success" t={t}
                     message={response?.message ?? responseMessages.SUCCESSFUL} />);
+                    handleClose();
             } else {
-                console.log("ttt::")
-                // toast.loading('Waiting...');
                 toast.custom((t) => <Alert type="failed" t={t}
                     message={response?.message ?? responseMessages.BAD_REQUEST} />);
             }

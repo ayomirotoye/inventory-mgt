@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { mockData } from "../../common/mocks";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import PageHeader from "../../components/header/PageHeader";
@@ -6,6 +6,8 @@ import { DeleteIcon } from "../../components/icons/DeleteIcon";
 import { EyeIcon } from "../../components/icons/EyeIcon";
 import AppTable from "../../components/tables/app-table";
 import DashboardContainer from "../../containers/DashboardContainer";
+import { isSuccessful } from "../../libs/helper";
+import { callGetUsersApi } from "../../services/userOpsService";
 import { theme } from "../../tailwind.config";
 import AddUserModal from "./micro-components/AddUserModal";
 
@@ -15,6 +17,7 @@ export default function UserMgt({ }: any) {
     const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [tableData, setTableData] = useState(Object.assign([]));
+    const [dataList, setDataList] = useState(Object.assign([]));
 
     const handleViewUserDetails = () => { };
 
@@ -26,14 +29,28 @@ export default function UserMgt({ }: any) {
         setShowAddNewUserModal(true);
     };
 
+    useEffect(() => {
+        callGetUsersApi().then((response: any) => {
+            console.log("log:::", response);
+            if (Array.isArray(response.data)) {
+                setDataList(response.data);
+            }
+        })
+
+        return () => {
+
+        }
+    }, [])
+
+
     useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        let dataList = mockData?.slice(firstPageIndex, lastPageIndex);
+        let dataListP = dataList?.slice(firstPageIndex, lastPageIndex);
 
         setTableData(
             <AppTable
-                dataList={dataList}
+                dataList={dataListP}
                 currentPage={currentPage}
                 totalCount={mockData.length}
                 PageSize={PageSize}
@@ -43,7 +60,8 @@ export default function UserMgt({ }: any) {
                     firstName: "Firstname",
                     lastName: "Lastname",
                     username: "Username",
-                    assetCategory: "Asset category",
+                    officePhoneNumber: "Phone number",
+                    location: "Location",
                     action: "",
                 }}
                 actionButtonList={[
@@ -98,7 +116,7 @@ export default function UserMgt({ }: any) {
                 ]}
             />
         );
-    }, [currentPage, mockData]);
+    }, [currentPage, dataList]);
 
     return (
         <DashboardContainer>
@@ -113,7 +131,6 @@ export default function UserMgt({ }: any) {
                     onClicked={handleAddNewUser}
                 />
             </div>
-
             {tableData}
 
             {showAddNewUserModal && (

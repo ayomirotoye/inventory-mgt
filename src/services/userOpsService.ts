@@ -8,7 +8,18 @@ export const callGetUserByUsernameApi = async (username: string) => {
             .catch(() => {
                 return { data: {} };
             });
-        return data?.userData ?? {};
+        return data?.data ?? {};
+    } catch (err: any) {
+        return { data: {} };
+    }
+}
+export const callGetUsersApi = async () => {
+    try {
+        const { data } = await httpService.get(endpoints.fetchUsersEndpoint)
+            .catch(() => {
+                return { data: {} };
+            });
+        return data.data ?? {};
     } catch (err: any) {
         return { data: {} };
     }
@@ -23,7 +34,6 @@ export const callPostAddUserApi = async (request: any) => {
             });
         return data;
     } catch (err: any) {
-        console.log("errr::", err)
         return handleMyErrors(err);
     }
 }

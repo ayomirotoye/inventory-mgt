@@ -1,13 +1,12 @@
 import { useMemo, useState } from "react";
 import colors from "tailwindcss/colors";
 import { PageSize } from "../../common/globals";
-import { approvalRequestDataMock, ApprovalMockData } from "../../common/mocks";
+import { ApprovalMockData, approvalRequestDataMock } from "../../common/mocks";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import PageHeader from "../../components/header/PageHeader";
 import { ApproveIcon } from "../../components/icons/ApproveIcon";
 import { DeniedIcon } from "../../components/icons/DeniedIcon";
 import ConfirmationModal from "../../components/modals/ConfirmationModal";
-import DialogModal from "../../components/modals/DialogModal";
 import AppTable from "../../components/tables/app-table";
 import DashboardContainer from "../../containers/DashboardContainer";
 import ApprovalRequestDetailModal from "./micro-components/ApprovalRequestDetailModal";
