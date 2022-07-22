@@ -7,7 +7,7 @@ import { EyeIcon } from "../../components/icons/EyeIcon";
 import AppTable from "../../components/tables/app-table";
 import DashboardContainer from "../../containers/DashboardContainer";
 import { isSuccessful } from "../../libs/helper";
-import { callGetUsersApi } from "../../services/userOpsService";
+import { callDeleteUsersApi, callGetUsersApi } from "../../services/userOpsService";
 import { theme } from "../../tailwind.config";
 import AddUserModal from "./micro-components/AddUserModal";
 
@@ -22,7 +22,7 @@ export default function UserMgt({ }: any) {
     const handleViewUserDetails = () => { };
 
     const handleDeleteUser = () => {
-        callDeleteUsersApi().then((response: any) => {
+        callDeleteUsersApi("").then((response: any) => {
             console.log("log:::", response);
             if (Array.isArray(response)) {
                 setDataList(response);
