@@ -50,7 +50,7 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
             setIsSearching(false);
             if (hasKeys(response.userData)) {
                 setIsUserPresent(true);
-                const userDetailsUpdated = { ...userDetail, ...response };
+                const userDetailsUpdated = { ...userDetail, ...response.userData };
                 setUserDetail(userDetailsUpdated);
             }
         })

@@ -21,7 +21,14 @@ export default function UserMgt({ }: any) {
 
     const handleViewUserDetails = () => { };
 
-    const handleDeleteUser = () => { };
+    const handleDeleteUser = () => {
+        callDeleteUsersApi().then((response: any) => {
+            console.log("log:::", response);
+            if (Array.isArray(response)) {
+                setDataList(response);
+            }
+        })
+    };
 
     const handlDeactivateUser = () => { };
 
@@ -32,13 +39,13 @@ export default function UserMgt({ }: any) {
     useEffect(() => {
         callGetUsersApi().then((response: any) => {
             console.log("log:::", response);
-            if (Array.isArray(response.data)) {
-                setDataList(response.data);
+            if (Array.isArray(response)) {
+                setDataList(response);
             }
         })
 
         return () => {
-
+            setDataList([]);
         }
     }, [])
 
@@ -52,14 +59,14 @@ export default function UserMgt({ }: any) {
             <AppTable
                 dataList={dataListP}
                 currentPage={currentPage}
-                totalCount={mockData.length}
+                totalCount={dataList.length}
                 PageSize={PageSize}
                 onPageChange={(page: number) => setCurrentPage(page)}
                 headerList={{
                     sn: "S/N",
                     firstName: "Firstname",
                     lastName: "Lastname",
-                    username: "Username",
+                    userName: "Username",
                     officePhoneNumber: "Phone number",
                     location: "Location",
                     action: "",

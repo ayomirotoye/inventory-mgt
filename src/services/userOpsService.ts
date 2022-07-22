@@ -13,6 +13,17 @@ export const callGetUserByUsernameApi = async (username: string) => {
         return { data: {} };
     }
 }
+export const callDeleteUsersApi = async (username: string) => {
+    try {
+        const { data } = await httpService.delete(endpoints.deleteUserEndpoint.concat("/=", username))
+            .catch(() => {
+                return { data: {} };
+            });
+        return data?.data ?? {};
+    } catch (err: any) {
+        return { data: {} };
+    }
+}
 export const callGetUsersApi = async () => {
     try {
         const { data } = await httpService.get(endpoints.fetchUsersEndpoint)
