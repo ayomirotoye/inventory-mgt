@@ -4,7 +4,7 @@ import { handleMyErrors } from "./errorHandlingService";
 
 export const callGetUserByUsernameApi = async (username: string) => {
     try {
-        const { data } = await httpService.get(endpoints.fetchUserByUsername.concat("?userName=", username))
+        const { data } = await httpService.get(endpoints.fetchUserByUsernameEndpoint.concat("?username=", username))
             .catch(() => {
                 return { data: {} };
             });
@@ -16,7 +16,7 @@ export const callGetUserByUsernameApi = async (username: string) => {
 
 export const callPostAddUserApi = async (request: any) => {
     try {
-        const { data } = await httpService.post(endpoints.addUser, request)
+        const { data } = await httpService.post(endpoints.addUserEndpoint, request)
             .catch((err: any) => {
                 console.log("eee::", err)
                 return handleMyErrors(err);

@@ -3,10 +3,11 @@ import toast from "react-hot-toast";
 import { responseMessages } from "../../../common/constants";
 import Alert from "../../../components/alerts/Alert";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
+import UserRoleDropdown from "../../../components/dropdowns/UserRoleDropdown";
 import CustomInput from "../../../components/inputs/CustomInput";
 import SearchInput from "../../../components/inputs/SearchInput";
 import DialogModal from "../../../components/modals/DialogModal";
-import { hasKeys, isSuccessful } from "../../../libs/helper";
+import { hasKeys, isSuccessful, setValue } from "../../../libs/helper";
 import { callGetUserByUsernameApi, callPostAddUserApi } from "../../../services/userOpsService";
 
 export default function AddUserModal({ handleClose, isOpen }: any) {
@@ -48,7 +49,8 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
         callGetUserByUsernameApi(userDetail.username).then((response: any) => {
             setIsSearching(false);
             if (hasKeys(response)) {
-                setIsUserPresent(true)
+                setIsUserPresent(true);
+                console.log("keyss:::", hasKeys(userDetail.userRole));
                 const userDetailsUpdated = { ...userDetail, ...response };
                 setUserDetail(userDetailsUpdated);
             }
@@ -57,7 +59,37 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
 
     const handleSubmitUser = () => {
         setIsSubmitting(true);
-        callPostAddUserApi(userDetail).then((response: any) => {
+        let modifiedRequest = {
+            email: userDetail.emailAddress,
+            firstName: userDetail.givenName,
+            jobTitle: userDetail.title,
+            lastName: userDetail.surname,
+            officePhoneNumber: userDetail.telephoneNumber,
+            userName: userDetail.username,
+            "businessCategory": userDetail.businessCategory,
+            "company": userDetail.company,
+            "description": userDetail.description,
+            "displayName": userDetail.displayName,
+            "distinguishedName": userDetail.distinguishedName,
+            "employeeId": userDetail.employeeId,
+            "employmentType": userDetail.employmentType,
+            "location": userDetail.location,
+            "manager": userDetail.manager,
+            "managerCN": userDetail.managerCN,
+            "middleName": userDetail.middleName,
+            "ou": userDetail.ou,
+            "physicalDeliveryOfficeName": userDetail.physicalDeliveryOfficeName,
+            "refIndicator": userDetail.refIndicator,
+            "userID": userDetail.userID,
+            "userRole": {
+                "id": userDetail.userRole.value,
+                "name": userDetail.userRole.label
+            },
+            "whenChanged": userDetail.whenChanged,
+            "whenCreated": userDetail.whenCreated
+        };
+
+        callPostAddUserApi(modifiedRequest).then((response: any) => {
             console.log("response::", response);
             setIsSubmitting(false);
             if (isSuccessful(response?.responseCode)) {
@@ -153,12 +185,26 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
                             message: formErrors.location,
                         }}
                     />
-
+                </div>
+                <div>
+                    <UserRoleDropdown
+                        optionTitle="User Role"
+                        labelTitle="User Role"
+                        labelClassName="font-bold text-sm mb-3"
+                        isVisible={true}
+                        value={setValue(userDetail?.userRole)}
+                        onChange={(label: any, value: any) => setUserDetail({
+                            ...userDetail, userRole: {
+                                label: label,
+                                value: value
+                            }
+                        })}
+                    />
                 </div>
                 <div>
                     <PrimaryButton
                         extraDivStyles="w-full my-5"
-                        disabled={isSubmitting || !isUserPresent}
+                        disabled={isSubmitting ? isSubmitting : (isUserPresent && hasKeys(userDetail.userRole)) ? false : true}
                         isLoading={isSubmitting}
                         onClicked={handleSubmitUser}
                         buttonText="Submit"

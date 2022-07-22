@@ -6,7 +6,7 @@ import { handleMyErrors } from "./errorHandlingService";
 export const callUserLoginApi = async (_data: any) => {
     try {
 
-        const url = endpoints.authenticateUser;
+        const url = endpoints.authenticateUserEndpoint;
         const { data } = await httpService.post(url, _data).catch((err: any) => {
             const errBody = handleMyErrors(err);
             return { data: errBody }

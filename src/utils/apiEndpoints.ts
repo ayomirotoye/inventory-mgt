@@ -1,6 +1,7 @@
 export const endpoints = {
-    authenticateUser: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/authenticate`,
-    addUser: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User`,
-    fetchUserByUsername: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/searchByUserName`,
-    refreshTokenEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/authenticate`
+    authenticateUserEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/authenticate`,
+    addUserEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User`,
+    fetchUserByUsernameEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/searchByUserName`,
+    refreshTokenEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/User/authenticate`,
+    fetchRolesEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/Roles`
 }

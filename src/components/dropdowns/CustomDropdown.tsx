@@ -17,7 +17,7 @@ export default function CustomDropdown({
     valueField,
     descriptionField,
     addNew = {},
-    border = "border-primary-400 border-2",
+    border = "border-primary-900 border-2",
     selectedOptionClassName=""
 }: any) {
 
@@ -38,7 +38,7 @@ export default function CustomDropdown({
             <div className={`flex justify-between bg-white font-semibold items-center ${border} px-3 rounded-lg cursor-pointer `}
                 onBlur={onClose}
                 onClick={() => setOptionsAreVisible(true)}>
-                <div className={`m-3 flex flex-row truncate ${selectedOptionClassName} h-6`}>{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? <p className="object-contain">-- choose --</p> : currentLabel}</div>
+                <div className={`m-3 flex flex-row truncate text-primary-900 ${selectedOptionClassName} h-6`}>{isNullOrUndefined(currentLabel) || isEmptyString(currentLabel) ? <p className="object-contain">-- choose --</p> : currentLabel}</div>
                 <div className="flex-none" onClick={() => setOptionsAreVisible(true)}>
                     <ChevronDownIcon
                         className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -68,7 +68,7 @@ export default function CustomDropdown({
                 {converterToCustomList(arrOfOptions, labelField, valueField, descriptionField).map((items: any, index: number) => {
                     return <div
                         key={"custom_dropdown".concat("_", String(index), "_", items.value)}
-                        className='cursor-pointer py-2 bg-primary-100 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
+                        className='cursor-pointer py-2 hover:bg-gray-100 rounded-lg pl-2 my-1 relative'
                         style={{ borderBottom: '1px solid rgba(243, 244, 246, 1)' }}
                         tabIndex={0}
                         role="option"

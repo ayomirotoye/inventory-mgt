@@ -16,12 +16,12 @@ export default function SearchInput({ widthClass = "w-80",
                         onChange={onChangeInput}
                         type="text"
                         name={name}
-                        className="bg-white text w-full focus:outline-none px-3 py-3 rounded text-gray-900 focus:bg-white focus:ring-indigo-500"
+                        className="bg-white text w-full focus:outline-none px-3 py-3 rounded text-primary-900 focus:bg-white focus:ring-indigo-500"
                         placeholder={placeholder} /> :
                         <input value={searchQuery}
                             readOnly={true}
                             type="text"
-                            className="bg-white text w-full focus:outline-none px-3 py-3 rounded text-gray-900 focus:bg-white focus:ring-indigo-500"
+                            className="bg-white text w-full focus:outline-none px-3 py-3 rounded text-primary-900 focus:bg-white focus:ring-indigo-500"
                             placeholder={placeholder} />
                     }
                 </div>
