@@ -19,11 +19,35 @@ export const callDeleteUsersApi = async (userId: string) => {
             .catch(() => {
                 return { data: {} };
             });
-        return data?.data ?? {};
+        return data ?? {};
     } catch (err: any) {
         return { data: {} };
     }
 }
+export const callActivateUsersApi = async (userId: string) => {
+    try {
+        const { data } = await httpService.put(endpoints.activateUserEndpoint.concat("/", userId))
+            .catch(() => {
+                return { data: {} };
+            });
+        return data ?? {};
+    } catch (err: any) {
+        return { data: {} };
+    }
+}
+
+export const callDeactivateUsersApi = async (userId: string) => {
+    try {
+        const { data } = await httpService.put(endpoints.dectivateUserEndpoint.concat("/", userId))
+            .catch(() => {
+                return { data: {} };
+            });
+        return data ?? {};
+    } catch (err: any) {
+        return { data: {} };
+    }
+}
+
 export const callGetUsersApi = async () => {
     try {
         const { data } = await httpService.get(endpoints.fetchUsersEndpoint)

@@ -4,9 +4,9 @@ import { responseMessages } from "../../../common/constants";
 import Alert from "../../../components/alerts/Alert";
 import ConfirmationModal from "../../../components/modals/ConfirmationModal";
 import { isSuccessful } from "../../../libs/helper";
-import { callDeleteUsersApi } from "../../../services/userOpsService";
+import { callActivateUsersApi } from "../../../services/userOpsService";
 
-export default function DeleteUserModal({ handleClose,
+export default function ActivateUserModal({ handleClose,
     isOpen,
     userId,
     fetchUsers
@@ -14,10 +14,10 @@ export default function DeleteUserModal({ handleClose,
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
 
-    const handleDeleteUser = () => {
+    const handleActivateUser = () => {
         setIsSubmitting(true);
 
-        callDeleteUsersApi(userId).then((response: any) => {
+        callActivateUsersApi(userId).then((response: any) => {
             setIsSubmitting(false);
             if (isSuccessful(response?.responseCode)) {
                 toast.custom((t) => <Alert type="success" t={t}
@@ -38,7 +38,7 @@ export default function DeleteUserModal({ handleClose,
             modalTitle="Are you sure ?"
             onClosed={handleClose}
             showModal={isOpen}
-            onConfirm={handleDeleteUser}
+            onConfirm={handleActivateUser}
             isConfirming={isSubmitting}
         />
     )

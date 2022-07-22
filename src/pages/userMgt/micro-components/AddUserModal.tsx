@@ -10,7 +10,7 @@ import DialogModal from "../../../components/modals/DialogModal";
 import { hasKeys, isSuccessful, setValue } from "../../../libs/helper";
 import { callGetUserByUsernameApi, callPostAddUserApi } from "../../../services/userOpsService";
 
-export default function AddUserModal({ handleClose, isOpen }: any) {
+export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
     const [formErrors] = useState<any>({});
     const [isSearching, setIsSearching] = useState<boolean>(false);
     const [isUserPresent, setIsUserPresent] = useState<boolean>(false);
@@ -51,7 +51,6 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
             if (hasKeys(response.userData)) {
                 setIsUserPresent(true);
                 const userDetailsUpdated = { ...userDetail, ...response.userData };
-                console.log("userDetailsUpdated::", userDetailsUpdated)
                 setUserDetail(userDetailsUpdated);
             }
         })
@@ -95,7 +94,8 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
             if (isSuccessful(response?.responseCode)) {
                 toast.custom((t) => <Alert type="success" t={t}
                     message={response?.message ?? responseMessages.SUCCESSFUL} />);
-                    handleClose();
+                handleClose();
+                fetchUsers();
             } else {
                 toast.custom((t) => <Alert type="failed" t={t}
                     message={response?.message ?? responseMessages.BAD_REQUEST} />);
@@ -147,7 +147,7 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
                         readOnly={true}
                         inputFontSize="md:text-sm"
                         name="lastName"
-                       
+
                     />
                 </div>
                 <div className="mb-2 md:flex md:justify-between md:space-x-2">

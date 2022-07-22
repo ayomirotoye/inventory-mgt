@@ -1,5 +1,6 @@
 import SpinnerIcon from "../../assets/gif/spinner.gif";
 import { isNullOrUndefined } from "../../libs/helper";
+import SpinnerLoader from "../loaders/spinner";
 
 const PrimaryButton = ({
     onClicked,
@@ -19,7 +20,7 @@ const PrimaryButton = ({
                 onClick={onClicked}
                 type="button"
                 className={className.concat(" ", height)}>{isLoading ?
-                    <span className="flex justify-center"> <img src={SpinnerIcon} alt="spinner icon" className="text-center" width="30" /></span>
+                    <SpinnerLoader isLoading={isLoading} />
                     : !isNullOrUndefined(children) ? children : buttonText}</button>
         </div >
     );

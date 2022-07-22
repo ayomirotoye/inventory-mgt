@@ -58,7 +58,7 @@ const myDeleteAxios = async (url: string) => {
   return await axios.delete(url);
 }
 
-const myPutAxios = async (url: string, requestData: any) => {
+const myPutAxios = async (url: string, requestData?: any) => {
 
   return await axios.put(url, requestData);
 }

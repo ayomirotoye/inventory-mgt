@@ -34,7 +34,7 @@ export default function MyPopover({
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                                 <div className={panelClassName}>
                                     {listItems.map((item: any, index: number) => (
-                                        <React.Fragment key={`popoverlist_${index}`}>
+                                        !isNullOrUndefined(item) ? <React.Fragment key={`popoverlist_${index}`}>
                                             {isNullOrUndefined(item.onClick) ?
                                                 <Link to={item.href}>
                                                     <div className="flex justify-start cursor-pointer my-2">
@@ -42,11 +42,11 @@ export default function MyPopover({
                                                         <div className="font-semibold truncate text-[12px]">{item.name}</div>
                                                     </div>
                                                 </Link> :
-                                                <div onClick={item.onClick} className="flex justify-start cursor-pointer my-2 items-center">
+                                                <button id={"item_".concat("" + index, "_", item.name)} data-itemdata={!isNullOrUndefined(item.data) ? JSON.stringify(item.data) : ""} onClick={item.onClick} className="flex justify-start cursor-pointer my-2 items-center">
                                                     {hasKeys(item.hasIcon ?? {}) && <div className="text-left mr-2">{item.hasIcon.icon}</div>}
-                                                    <div className="font-semibold truncate text-[12px]">{item.name}</div>
-                                                </div>}
-                                        </React.Fragment>
+                                                    <span className="font-semibold truncate text-[12px]">{item.name}</span>
+                                                </button>}
+                                        </React.Fragment> : []
                                     ))}
                                 </div>
                             </div>

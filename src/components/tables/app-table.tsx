@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import {
     capitaliseFirstLetter, formatCurrencyWithDecimal,
+    hasKey,
     hasKeys, isNullOrUndefined, splitString
 } from "../../libs/helper";
 import PrimaryButton from "../buttons/PrimaryButton";
@@ -109,7 +110,7 @@ export default function AppTable({
                     <tbody>
                         {dataList?.map((dataItems: any, index: number) =>
                             <tr key={index} className="hover:bg-gray-100 focus-within:bg-gray-100 h-7 cursor-pointer"
-                                onClick={isNullOrUndefined(onViewDetails) ? () => onViewDetails(dataItems) : () => null}>
+                                onClick={!isNullOrUndefined(onViewDetails) ? () => onViewDetails(dataItems) : () => null}>
                                 <>{isSelectable && <TableData className={tdClassName}>
                                     {
                                         <Switch
@@ -160,13 +161,15 @@ export default function AppTable({
                                                             </PrimaryButton>}
                                                         listItems={
                                                             actionButtonList?.map((items: any) => {
-                                                                return (
+                                                                return !(hasKey(items, "isVisible") && items.isVisible(dataItems[items.visibilityConditionField])) ? (
                                                                     {
                                                                         name: items.actionText,
                                                                         onClick: items.handleClick,
-                                                                        hasIcon: items.hasIcon
+                                                                        hasIcon: items.hasIcon,
+                                                                        data: { id: dataItems["id"] },
+                                                                        isVisible: items.isUserActive
                                                                     }
-                                                                )
+                                                                ) : null
                                                             })
                                                         }
                                                     />
