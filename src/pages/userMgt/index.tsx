@@ -10,24 +10,23 @@ import { isSuccessful } from "../../libs/helper";
 import { callDeleteUsersApi, callGetUsersApi } from "../../services/userOpsService";
 import { theme } from "../../tailwind.config";
 import AddUserModal from "./micro-components/AddUserModal";
+import DeleteUserModal from "./micro-components/DeleteUserModal";
 
 let PageSize = 10;
 
 export default function UserMgt({ }: any) {
     const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
+    const [showDeleteUserModal, setShowDeleteUserModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [currentUserId, setCurrentUserId] = useState("");
     const [tableData, setTableData] = useState(Object.assign([]));
     const [dataList, setDataList] = useState(Object.assign([]));
 
     const handleViewUserDetails = () => { };
 
-    const handleDeleteUser = () => {
-        callDeleteUsersApi("").then((response: any) => {
-            console.log("log:::", response);
-            if (Array.isArray(response)) {
-                setDataList(response);
-            }
-        })
+    const handleDeleteUser = (userd: any) => {
+        console.log("USER DETAILS:::", userd)
+        setShowDeleteUserModal(true)
     };
 
     const handlDeactivateUser = () => { };
@@ -144,6 +143,12 @@ export default function UserMgt({ }: any) {
                 <AddUserModal
                     isOpen={showAddNewUserModal}
                     handleClose={() => { setShowAddNewUserModal(false) }}
+                />
+            )}
+            {showDeleteUserModal && (
+                <DeleteUserModal
+                    isOpen={showDeleteUserModal}
+                    handleClose={() => { setShowDeleteUserModal(false) }}
                 />
             )}
         </DashboardContainer>

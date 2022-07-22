@@ -2,12 +2,15 @@ import { AiFillQuestionCircle, AiOutlineClose } from "react-icons/ai";
 import colors from "tailwindcss/colors";
 import PrimaryButton from "../buttons/PrimaryButton";
 import { ApproveIcon } from "../icons/ApproveIcon";
+import SpinnerLoader from "../loaders/spinner";
 import DialogModal from "./DialogModal";
 
 export default function ConfirmationModal({
     showModal = false,
     modalTitle = "Are you sure ?",
-    onClosed
+    onClosed,
+    onConfirm,
+    isConfirming
 }: any) {
 
     return (
@@ -30,14 +33,14 @@ export default function ConfirmationModal({
                         </span>
                     </PrimaryButton>
                     <PrimaryButton
-                        onClicked={onClosed}
+                        onClicked={onConfirm}
                         height="py-2 px-3 mb-2 md:mb-0"
                         className="w-full font-bold bg-primary-400 text-black rounded-lg border-2 border-red-900 cursor-pointer"
                     >
-                        <span className="flex justify-between inline-block align-middle items-center">
+                        {isConfirming ? <SpinnerLoader isLoading={isConfirming} /> : <span className="flex justify-between inline-block align-middle items-center">
                             <ApproveIcon fill={colors.green[900]} className="h-4 w-4" />
                             Continue
-                        </span>
+                        </span>}
                     </PrimaryButton>
                 </ div>
             }

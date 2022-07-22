@@ -51,6 +51,7 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
             if (hasKeys(response.userData)) {
                 setIsUserPresent(true);
                 const userDetailsUpdated = { ...userDetail, ...response.userData };
+                console.log("userDetailsUpdated::", userDetailsUpdated)
                 setUserDetail(userDetailsUpdated);
             }
         })
@@ -60,10 +61,10 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
         setIsSubmitting(true);
         let modifiedRequest = {
             email: userDetail.emailAddress,
-            firstName: userDetail.givenName,
+            firstName: userDetail.firstName,
             jobTitle: userDetail.title,
-            lastName: userDetail.surname,
-            officePhoneNumber: userDetail.telephoneNumber,
+            lastName: userDetail.lastName,
+            officePhoneNumber: userDetail.officePhoneNumber,
             userName: userDetail.username,
             "businessCategory": userDetail.businessCategory,
             "company": userDetail.company,
@@ -130,45 +131,34 @@ export default function AddUserModal({ handleClose, isOpen }: any) {
                 </div>
                 <div className="mb-2 md:flex md:justify-between md:space-x-2">
                     <CustomInput
-                        value={userDetail?.givenName}
+                        value={userDetail?.firstName}
                         hideableLabelText=""
                         fixedLabelText="Firstname"
                         readOnly={true}
                         type="text"
                         inputFontSize="md:text-sm"
-                        name="givenName"
-                        error={{
-                            hasError: formErrors.givenName,
-                            message: formErrors.givenName,
-                        }}
+                        name="firstName"
                     />
                     <CustomInput
-                        value={userDetail?.surname}
+                        value={userDetail?.lastName}
                         hideableLabelText=""
                         fixedLabelText="Lastname"
                         type="text"
                         readOnly={true}
                         inputFontSize="md:text-sm"
-                        name="surname"
-                        error={{
-                            hasError: formErrors.surname,
-                            message: formErrors.surname,
-                        }}
+                        name="lastName"
+                       
                     />
                 </div>
                 <div className="mb-2 md:flex md:justify-between md:space-x-2">
                     <CustomInput
-                        value={userDetail?.telephoneNumber}
+                        value={userDetail?.officePhoneNumber}
                         hideableLabelText=""
                         fixedLabelText="Phone number"
                         type="text"
                         readOnly={true}
                         inputFontSize="md:text-sm"
-                        name="telephoneNumber"
-                        error={{
-                            hasError: formErrors.telephoneNumber,
-                            message: formErrors.telephoneNumber,
-                        }}
+                        name="officePhoneNumber"
                     />
                     <CustomInput
                         value={userDetail?.location}
