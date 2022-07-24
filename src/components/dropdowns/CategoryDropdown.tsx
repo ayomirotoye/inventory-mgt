@@ -31,7 +31,6 @@ export default function CategoryDropdown({
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-
         let isSubscribed = true;
         const getCategories = async () => {
             setIsLoading(true);

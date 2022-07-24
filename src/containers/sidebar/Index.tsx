@@ -44,19 +44,6 @@ export const navbarItems = [
   },
 
   {
-    menuTitle: "Data Mgt.",
-    link: urlPaths.data,
-    menuData: [],
-    hasIcon: {
-      val: true,
-      alt: "Data mgt",
-      icon: (
-        <EyeIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
-      ),
-    },
-  },
-
-  {
     menuTitle: "User Mgt.",
     link: urlPaths.users,
     menuData: [],
@@ -77,6 +64,30 @@ export const navbarItems = [
       alt: "Role mgt",
       icon: (
         <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+  {
+    menuTitle: "Menu Mgt.",
+    link: urlPaths.menus,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "Menu mgt",
+      icon: (
+        <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+  {
+    menuTitle: "Data Mgt.",
+    link: urlPaths.data,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "Data mgt",
+      icon: (
+        <EyeIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
       ),
     },
   },

@@ -86,7 +86,7 @@ const CustomInput = (
                                 maxLength={maxLength}
                             /></>
                         </div>
-                    : <div className="bg-gray-100 grow border border-3 align-middle border-primary-900 border-solid rounded-md text-left py-1 px-1 h-10">
+                    : <div className="bg-gray-100 grow border border-2 align-middle border-primary-900 rounded-md text-left py-1 px-1 h-10">
                         <div className=''>
                             <div className={`${inputFontSize} text-primary-900 w-full font-bold`}>{value}</div>
                         </div>

@@ -16,7 +16,7 @@ import ProductSection from "../pages/product/micro-components/ProductSection";
 
 let PageSize = 10;
 
-export default function UserMgt({}: any) {
+export default function HotdeskTeam({}: any) {
   const [showAddNewProduct, setShowAddNewProduct] = useState(false);
 
   const addNewProduct = () => {

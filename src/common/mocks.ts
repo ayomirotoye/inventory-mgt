@@ -16,129 +16,6 @@ export const productDataMock = {
   quantityAvailable: 20,
 };
 
-export const mockDataMgt = [
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-  {
-    id: "1",
-    assetName: "WAREHOUSE OFFICER",
-    assetAddress: "WAREHOUSE OFFICER",
-    action: "",
-  },
-];
-
 export const mockDataRole = [
   {
     id: "1",
@@ -1123,6 +1000,128 @@ export const mockDataProduct = [
   },
 ];
 
+export const mockDataMgt = [
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+  {
+    id: "1",
+    assetName: "WAREHOUSE OFFICER",
+    assetAddress: "WAREHOUSE OFFICER",
+    action: "",
+  },
+];
 export const uppedCasedFieldsAtSpecificLocationsForProduct: any = {
   productSapNumber: 1,
   Uom: 0,

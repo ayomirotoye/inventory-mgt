@@ -25,7 +25,8 @@ export default function MenuDropdown({ menuList }: any) {
                 <Menu as="div" className="">
                     <div>
                         <Menu.Button className="flex w-full justify-start items-center rounded-md py-2 text-sm font-medium hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                            {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
+                            {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon :
+                                <MenuIconBars className='h-5 w-5' />}
                             <div className='hidden sm:block text-black hover:text-white focus:text-white ml-1'>{menuList?.menuTitle}</div>
                             <ChevronDownIcon
                                 className="ml-2 -mr-1 h-5 w-5 text-black"
