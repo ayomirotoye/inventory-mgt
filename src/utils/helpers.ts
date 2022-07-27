@@ -1,11 +1,10 @@
 import { isNullOrUndefined } from "../libs/helper";
 import httpService from "../networks/httpService";
-import { parseJwt } from "./tokenUtils";
 
-export const getValueFromUserDetail = (valueToGet: any) => {
+export const getValueFromUserDetail = (valueToGet?: any) => {
     let valueToReturn;
-    let tokenVal = getTokenVal();
-    let userDetails = parseJwt(tokenVal);
+    // let tokenVal = getTokenVal();
+    let userDetails = JSON.parse(sessionStorage.getItem("userDetails") ?? "{}");
     switch (valueToGet) {
         case "username":
             let username = !isNullOrUndefined(userDetails)
@@ -17,12 +16,6 @@ export const getValueFromUserDetail = (valueToGet: any) => {
             let encFName = sessionStorage.getItem("firstName");
             let firstName = !isNullOrUndefined(encFName) ? encFName : "";
             valueToReturn = firstName;
-            break;
-        case "tokenEnabled":
-            let tokenEnabled = !isNullOrUndefined(userDetails)
-                ? userDetails?.user_token_enabled
-                : "";
-            valueToReturn = tokenEnabled;
             break;
         case "isLoggedIn":
             valueToReturn = !isNullOrUndefined(sessionStorage.getItem("isLoggedIn"))
@@ -41,26 +34,8 @@ export const getValueFromUserDetail = (valueToGet: any) => {
                 : "";
             valueToReturn = userId;
             break;
-        case "corporateId":
-            let corporateId = !isNullOrUndefined(userDetails)
-                ? userDetails?.corporate_id
-                : "";
-            valueToReturn = corporateId;
-            break;
-        case "corporateCode":
-            let corporateCode = !isNullOrUndefined(userDetails)
-                ? userDetails?.corporate_code
-                : "";
-            valueToReturn = corporateCode;
-            break;
-        case "companyName":
-            let encComName = sessionStorage.getItem("companyName");
-            let companyName = !isNullOrUndefined(encComName) ? encComName : "";
-            valueToReturn = companyName;
-            break;
-
         default:
-            valueToReturn = "";
+            valueToReturn = userDetails;
             break;
     }
     return valueToReturn;

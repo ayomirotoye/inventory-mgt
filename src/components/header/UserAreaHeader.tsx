@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import colors from "tailwindcss/colors";
+import { urlPaths } from "../../common/urlPaths";
 import Brand from "../Brand";
 import CategoryDropdown from "../dropdowns/CategoryDropdown";
 import { AvatarIcon } from "../icons/AvatarIcon";
@@ -16,7 +17,7 @@ import MyPopover from "../MyPopover";
 const menuIconItems = [
   {
     name: "Profile",
-    href: "/profile",
+    href: urlPaths.profile,
     icon: (
       <UserIcon
         className="h-5 w-5"
@@ -28,7 +29,7 @@ const menuIconItems = [
   },
   {
     name: "My Wishlist",
-    href: "/profile",
+    href: "/",
     icon: (
       <WishlistIcon
         className="h-5 w-5"

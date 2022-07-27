@@ -13,7 +13,9 @@ export default function DashboardContainer({ children }: any) {
           <Sidebar />
         </div>
         <div className="col-span-10 px-10 py-5 bg-gray-100 overflow-y-auto bg-gray-200 h-full">
-          {children}
+          <div className="h-screen">
+            {children}
+          </div>
         </div>
       </div>
     </main>

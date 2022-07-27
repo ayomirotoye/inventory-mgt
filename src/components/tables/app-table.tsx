@@ -70,7 +70,7 @@ export default function AppTable({
       return;
     }
     setTableDiv(
-      <div >
+      <>
         <div className="bg-white rounded shadow overflow-x-auto sm:rounded mb-5 p-5 table-div" >
           <SearchInput widthClass="w-full border-4 border-primary-900 rounded-md my-3" />
           <table className="w-full whitespace-no-wrap">
@@ -377,7 +377,7 @@ export default function AppTable({
             />
           </div>
         )}
-      </div>
+      </>
     );
   }, [dataList]);
   return <>{tableDiv}</>;

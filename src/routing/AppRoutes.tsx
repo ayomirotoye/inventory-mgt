@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { urlPaths } from "../common/urlPaths";
+import Profile from "../pages/Profile";
 import ProtectedRouteWrapper from "./ProtectedRouteWrapper";
 
 const Login = lazy(() => import("./../pages/Login"));
@@ -77,6 +78,15 @@ const AppRoutes = () => {
             element={
               <ProtectedRouteWrapper>
                 <UploadProduct />
+              </ProtectedRouteWrapper>
+            }
+          />
+
+          <Route
+            path={urlPaths.profile}
+            element={
+              <ProtectedRouteWrapper>
+                <Profile />
               </ProtectedRouteWrapper>
             }
           />
