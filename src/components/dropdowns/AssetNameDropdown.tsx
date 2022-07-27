@@ -1,0 +1,89 @@
+import { useEffect, useState } from "react";
+import SpinnerLoader from "../loaders/spinner";
+import CustomDropdown from "./CustomSelect";
+
+export default function AssetNameDropdown({
+  isVisible,
+  value,
+  onChange,
+  className = "w-full",
+  labelTitle = "Asset Name",
+  labelClassName = "",
+  optionTitle = "",
+}: any) {
+  const [, setOptionsAreVisible] = useState(isVisible);
+  const [dataList] = useState([
+    {
+      name: "Bonga",
+      code: "bonga",
+    },
+    {
+      name: "Soku",
+      code: "soku",
+    },
+    {
+      name: "Bonny",
+      code: "bonny",
+    },
+  ]);
+  const [isLoading] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    if (!isVisible) {
+      setOptionsAreVisible(false);
+      return;
+    }
+    setOptionsAreVisible(true);
+  }, [isVisible]);
+
+  // useEffect(() => {
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  //     let isSubscribed = true;
+  //     const getCategories = async () => {
+  //         setIsLoading(true);
+  //         const dataList = await getCallCategoriesUrl();
+  //         setIsLoading(false);
+  //         if (isSubscribed) {
+  //             setDataList([]);
+  //         }
+  //     }
+
+  //     getCategories();
+  //     return () => {
+  //         isSubscribed = false;
+  //     };
+  // }, []);
+
+  return (
+    <>
+      <div className={className}>
+        {isLoading ? (
+          <SpinnerLoader />
+        ) : (
+          <CustomDropdown
+            arrOfOptions={dataList?.map((items: any) => {
+              return {
+                label: items.name,
+                value: items.code,
+              };
+            })}
+            onChange={onChange}
+            isVisible={isVisible}
+            currentLabel={value}
+            labelTitle={labelTitle}
+            labelClassName={labelClassName}
+            optionTitle={optionTitle}
+            labelField="label"
+            valueField="value"
+            descriptionField="description"
+            className="md:w-full md:mb-3 sm:mb-3"
+            selectedOptionClassName="text-md"
+          />
+        )}
+      </div>
+    </>
+  );
+}

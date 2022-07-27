@@ -1,65 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { responseMessages } from "../../../common/constants";
 import Alert from "../../../components/alerts/Alert";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import UserRoleDropdown from "../../../components/dropdowns/UserRoleDropdown";
 import CustomInput from "../../../components/inputs/CustomInput";
-import SearchInput from "../../../components/inputs/SearchInput";
 import DialogModal from "../../../components/modals/DialogModal";
-import { hasKeys, isSuccessful, setValue } from "../../../libs/helper";
-import {
-  callGetUserByUsernameApi,
-  callPostAddUserApi,
-} from "../../../services/userOpsService";
+import { isEmptyString, isNullOrUndefined, isSuccessful, setValue } from "../../../libs/helper";
+import { callPutEditUserApi } from "../../../services/userOpsService";
 
-export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
+export default function EditUserModal({ handleClose, isOpen, fetchUsers, data }: any) {
   const [formErrors] = useState<any>({});
-  const [isSearching, setIsSearching] = useState<boolean>(false);
-  const [isUserPresent, setIsUserPresent] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [userDetail, setUserDetail] = useState<any>({
-    description: "",
-    displayName: "",
-    distinguishedName: "",
-    emailAddress: "",
-    name: "",
-    employeeId: null,
-    givenName: "",
-    middleName: null,
-    title: "",
-    surname: "",
-    samAccountName: "",
-    photoData: null,
-    ou: "",
-    location: "",
-    company: "",
-    businessCategory: "",
-    physicalDeliveryOfficeName: "",
-    telephoneNumber: "",
-    whenCreated: "",
-    whenChanged: "",
-    mail: "",
-    employmentType: "",
-    manager: "",
-    managerCN: "",
-    shellGGDDepartmentNumber: "",
+
   });
 
-  const onClick = () => {
-    setIsSearching(true);
-    setIsUserPresent(false);
-    callGetUserByUsernameApi(userDetail.username).then((response: any) => {
-      setIsSearching(false);
-      if (hasKeys(response.userData)) {
-        setIsUserPresent(true);
-        const userDetailsUpdated = { ...userDetail, ...response.userData };
-        setUserDetail(userDetailsUpdated);
-      }
-    });
-  };
-
-  const handleSubmitUser = () => {
+  const handleEditUser = () => {
     setIsSubmitting(true);
     let modifiedRequest = {
       email: userDetail.emailAddress,
@@ -83,16 +40,12 @@ export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
       physicalDeliveryOfficeName: userDetail.physicalDeliveryOfficeName,
       refIndicator: userDetail.refIndicator,
       userID: userDetail.userID,
-      userRole: {
-        id: userDetail.userRole.value,
-        name: userDetail.userRole.label,
-      },
+      userRole: userDetail.userRole,
       whenChanged: userDetail.whenChanged,
       whenCreated: userDetail.whenCreated,
     };
 
-    callPostAddUserApi(modifiedRequest).then((response: any) => {
-      console.log("response::", response);
+    callPutEditUserApi(modifiedRequest).then((response: any) => {
       setIsSubmitting(false);
       if (isSuccessful(response?.responseCode)) {
         toast.custom((t) => (
@@ -116,30 +69,36 @@ export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
     });
   };
 
+  useEffect(() => {
+    if (!isNullOrUndefined(data)) {
+      setUserDetail(data);
+    }
+
+    return () => {
+      setUserDetail({})
+    }
+  }, [data])
+
+
   return (
     <DialogModal
       showFooter={false}
       size="md:w-1/2"
       isModalVisible={isOpen}
-      modalTitle="New user details"
+      modalTitle="Edit User Details"
       onClosed={handleClose}
     >
       <div className="my-3">
         <div className="mb-2 md:flex">
           <div className="w-full">
-            <span>Username</span>
-            <SearchInput
-              searchQuery={userDetail?.username ?? ""}
-              onChangeInput={(e: any) => {
-                setUserDetail({
-                  ...userDetail,
-                  [e.target.name]: e.target.value,
-                });
-              }}
-              name="username"
-              handleClick={onClick}
-              widthClass="w-full border-2 border-primary-900 rounded-md my-2"
-              isSearching={isSearching}
+            <CustomInput
+              value={userDetail?.userName}
+              hideableLabelText=""
+              fixedLabelText="Username"
+              readOnly={true}
+              type="text"
+              inputFontSize="md:text-sm"
+              name="firstName"
             />
           </div>
         </div>
@@ -195,13 +154,10 @@ export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
             labelClassName="font-bold text-sm mb-3"
             isVisible={true}
             value={setValue(userDetail?.userRole)}
-            onChange={(label: any, value: any) =>
+            onChange={(e: any) =>
               setUserDetail({
                 ...userDetail,
-                userRole: {
-                  label: label,
-                  value: value,
-                },
+                userRole: e.target.value,
               })
             }
           />
@@ -212,12 +168,10 @@ export default function AddUserModal({ handleClose, isOpen, fetchUsers }: any) {
             disabled={
               isSubmitting
                 ? isSubmitting
-                : isUserPresent && hasKeys(userDetail.userRole)
-                ? false
-                : true
+                : isNullOrUndefined(userDetail.userRole) || isEmptyString(userDetail.userRole)
             }
             isLoading={isSubmitting}
-            onClicked={handleSubmitUser}
+            onClicked={handleEditUser}
             buttonText="Submit"
             height="py-4"
           />

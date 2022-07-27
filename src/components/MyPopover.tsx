@@ -37,7 +37,7 @@ export default function MyPopover({
                                         !isNullOrUndefined(item) ? <React.Fragment key={`popoverlist_${index}`}>
                                             {isNullOrUndefined(item.onClick) ?
                                                 <Link to={item.href}>
-                                                    <div className="flex justify-start cursor-pointer my-2">
+                                                    <div className="flex justify-start cursor-pointer my-2 p-2 listItem">
                                                         <div className="text-left mr-2">{item.icon}</div>
                                                         <div className="font-semibold truncate text-[12px]">{item.name}</div>
                                                     </div>

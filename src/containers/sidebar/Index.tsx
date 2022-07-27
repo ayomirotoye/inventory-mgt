@@ -1,6 +1,6 @@
 import { theme } from "../../tailwind.config";
 import { urlPaths } from "../../common/urlPaths";
-import MenuDropdown from "../../components/dropdowns/MenuDropdown";
+import MenuDropdown from "../../components/dropdowns/CustomMenuDropdown";
 import { AdminIcon } from "../../components/icons/AdminIcon";
 import { DashboardIcon } from "../../components/icons/DashboardIcon";
 import { EyeIcon } from "../../components/icons/EyeIcon";
@@ -64,6 +64,30 @@ export const navbarItems = [
       alt: "Role mgt",
       icon: (
         <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+  {
+    menuTitle: "Menu Mgt.",
+    link: urlPaths.menus,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "Menu mgt",
+      icon: (
+        <UserIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
+      ),
+    },
+  },
+  {
+    menuTitle: "Data Mgt.",
+    link: urlPaths.data,
+    menuData: [],
+    hasIcon: {
+      val: true,
+      alt: "Data mgt",
+      icon: (
+        <EyeIcon className="h-5 w-5" fill={theme.extend.colors.customRed} />
       ),
     },
   },
@@ -157,6 +181,11 @@ export const navbarItems = [
         link: urlPaths.products.index,
         title: "listing",
         urlMatchers: [urlPaths.products.index],
+      },
+      {
+        link: urlPaths.upload,
+        title: "upload",
+        urlMatchers: [urlPaths.upload],
       },
       {
         link: urlPaths.wells,

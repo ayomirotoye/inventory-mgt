@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SpinnerLoader from "../loaders/spinner";
-import CustomDropdown from "./CustomDropdown";
+import CustomDropdown from "./CustomSelect";
 
 
 export default function RequestTypeDropdown({
@@ -9,7 +9,7 @@ export default function RequestTypeDropdown({
     onChange,
     className = 'w-full',
     labelTitle = "Request Type",
-    labelClassName="",
+    labelClassName = "",
     optionTitle = ""
 }: any) {
 
@@ -59,7 +59,7 @@ export default function RequestTypeDropdown({
     return (
         <>
             <div className={className}>
-                {isLoading ? <SpinnerLoader isLoading={isLoading} /> : <CustomDropdown
+                {isLoading ? <SpinnerLoader /> : <CustomDropdown
                     arrOfOptions={dataList?.map((items: any) => {
                         return {
                             label: items.name,

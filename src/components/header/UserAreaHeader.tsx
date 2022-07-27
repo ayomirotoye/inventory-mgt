@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import colors from "tailwindcss/colors";
-// import {theme} from '../../../tailwind.config';
 import Brand from "../Brand";
 import CategoryDropdown from "../dropdowns/CategoryDropdown";
 import { AvatarIcon } from "../icons/AvatarIcon";
@@ -103,7 +102,7 @@ const UserAreaHeader = ({ isLoggedIn = false }) => {
               optionTitle="Category / Products"
               labelTitle=""
               isVisible={true}
-              value={""}
+              value=""
               onChange={(e: any) =>
                 setValues({ ...values, [e.target.name]: e.target.value })
               }

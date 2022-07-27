@@ -2,6 +2,8 @@ export const urlPaths = {
   home: "/home",
   dashboard: "/dashboard",
   roles: "/dashboard/roles",
+  menus: "/dashboard/menus",
+  data: "/dashboard/data",
   approvals: "/dashboard/approvals",
   profile: "/dashboard/profile",
   products: {
@@ -9,6 +11,7 @@ export const urlPaths = {
     details: "/dashboard/product/details",
   },
   wells: "/products/wells",
+  upload: "/products/upload",
   hotdesk: "/products/hotdesk",
   users: "/users",
   admin: "/admin",

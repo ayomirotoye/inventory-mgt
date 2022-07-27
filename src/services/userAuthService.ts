@@ -1,4 +1,4 @@
-import { cherryPickObject, isSuccessful } from "../libs/helper";
+import { isSuccessful } from "../libs/helper";
 import httpService from "../networks/httpService";
 import { endpoints } from "../utils/apiEndpoints";
 import { handleMyErrors } from "./errorHandlingService";
@@ -12,8 +12,8 @@ export const callUserLoginApi = async (_data: any) => {
             return { data: errBody }
         });
         if (isSuccessful(data?.responseCode)) {
-            const jwtToken = data?.token;
-            const refreshToken = data.refreshToken;
+            // const jwtToken = data?.token;
+            // const refreshToken = data.refreshToken;
             // tokenPersistenceFlow(jwtToken, refreshToken);
             sessionStorage.setItem("isLoggedIn", "true");
             sessionStorage.setItem("userDetails", JSON.stringify(data.profile));

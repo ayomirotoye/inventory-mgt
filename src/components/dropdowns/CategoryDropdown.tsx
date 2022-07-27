@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCallCategoriesUrl } from "../../services/utilityService";
 import SpinnerLoader from "../loaders/spinner";
-import CustomDropdown from "./CustomDropdown";
+import CustomDropdown from "./CustomSelect";
 
 
 export default function CategoryDropdown({
@@ -51,7 +51,7 @@ export default function CategoryDropdown({
     return (
         <>
             <div className={className}>
-                {isLoading ? <SpinnerLoader isLoading={isLoading} /> : <CustomDropdown
+                {isLoading ? <SpinnerLoader /> : <CustomDropdown
                     arrOfOptions={dataList?.map((items: any) => {
                         return {
                             label: items.name,

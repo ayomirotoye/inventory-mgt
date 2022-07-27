@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Futura';
+    font-family: "Futura";
     src: url("./public/fonts/futura light medium.ttf");
 }

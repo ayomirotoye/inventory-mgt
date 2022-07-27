@@ -4,20 +4,20 @@ import { responseMessages } from "../../../common/constants";
 import Alert from "../../../components/alerts/Alert";
 import ConfirmationModal from "../../../components/modals/ConfirmationModal";
 import { isSuccessful } from "../../../libs/helper";
-import { callActivateUsersApi } from "../../../services/userOpsService";
+import { callDeleteRolesApi } from "../../../services/roleOpsService";
 
-export default function ActivateUserModal({
+export default function DeleteRoleModal({
   handleClose,
   isOpen,
-  userId,
-  fetchUsers,
+  roleId,
+  fetchRoles,
 }: any) {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleActivateUser = () => {
+  const handleDeleteRole = () => {
     setIsSubmitting(true);
 
-    callActivateUsersApi(userId).then((response: any) => {
+    callDeleteRolesApi(roleId).then((response: any) => {
       setIsSubmitting(false);
       if (isSuccessful(response?.responseCode)) {
         toast.custom((t) => (
@@ -28,7 +28,7 @@ export default function ActivateUserModal({
           />
         ));
         handleClose();
-        fetchUsers();
+        fetchRoles();
       } else {
         toast.custom((t) => (
           <Alert
@@ -46,7 +46,7 @@ export default function ActivateUserModal({
       modalTitle="Are you sure ?"
       onClosed={handleClose}
       showModal={isOpen}
-      onConfirm={handleActivateUser}
+      onConfirm={handleDeleteRole}
       isConfirming={isSubmitting}
     />
   );

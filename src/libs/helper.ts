@@ -25,15 +25,21 @@ export const allowedExtensionArr = (fileKey: any) => ["signature", "utilityBill"
 
 export const setValue = (value: any, field = "") => {
   let resVal = "";
+  console.log("value:::", value);
   if (isNullOrUndefined(value) || isEmptyString(value)) {
     return "";
   }
   if (hasKey(value, "label")) {
     resVal = value["label"];
-  } else {
-    resVal = hasKeys(value)
-      ? value[field] : (isObject(value) && !hasKeys(value) ? "" : value);
+  } else{
+    resVal = isObject(value)
+      ? (hasKeys(value) ? value[field] : "") : value;
   }
+  
+  // else {
+  //   resVal = hasKeys(value)
+  //     ? value[field] : (isObject(value) && !hasKeys(value) ? "" : value);
+  // }
   return resVal;
 }
 
@@ -195,6 +201,21 @@ export const capitaliseFirstLetter = (val: string) => {
     val.charAt(0).toUpperCase().concat(val.substring(1).toLowerCase()) : val.toUpperCase();
 }
 
+export const capitaliseEachWord = (val: string) => {
+  if (!isNullOrUndefined(val)) {
+    let res = val.split(" ");
+    let newWord = "";
+    for (let i = 0; i < res.length; i++) {
+      newWord += capitaliseFirstLetter(res[i]) + (res[i].length > 2 ? " " : "");
+    }
+    return newWord;
+  } else {
+    return "";
+  }
+}
+
+
+
 export const hasKeys = (val: any) => {
   return !isNullOrUndefined(val) && Object.keys(val).length > 0
 }
@@ -262,10 +283,24 @@ export const camelCaseToSentenceCase = (val: string) => {
   try {
     if (!isEmptyString(val)) {
       res = val.replace(/([a-zA-Z])(?=[A-Z])/g, "$1 ");
-      res = capitaliseFirstLetter(res)
+      res = capitaliseEachWord(res)
     }
   } catch (error) {
     console.log("ERROR OCCURRED WHILE PARSING:::", error);
+  }
+
+  return res;
+};
+
+export const camelCaseToSpecialSentenceCase = (val: string, splitter = " ", wordTokenPos: number) => {
+  let res = camelCaseToSentenceCase(val);
+
+  if (res.length > 0) {
+    let splitString = res.split(splitter);
+    for (let i = 1; i < splitString.length; i++) {
+      res += splitString[i];
+    }
+    res += splitString[0].concat(" ", res);
   }
 
   return res;
