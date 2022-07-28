@@ -36,26 +36,6 @@ export default function RequestTypeDropdown({
         setOptionsAreVisible(true);
     }, [isVisible]);
 
-    // useEffect(() => {
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-
-    //     let isSubscribed = true;
-    //     const getCategories = async () => {
-    //         setIsLoading(true);
-    //         const dataList = await getCallCategoriesUrl();
-    //         setIsLoading(false);
-    //         if (isSubscribed) {
-    //             setDataList([]);
-    //         }
-    //     }
-
-
-    //     getCategories();
-    //     return () => {
-    //         isSubscribed = false;
-    //     };
-    // }, []);
-
     return (
         <>
             <div className={className}>

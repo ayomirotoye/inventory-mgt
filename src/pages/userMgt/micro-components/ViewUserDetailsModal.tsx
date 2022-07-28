@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { Fragment } from "react";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import DialogModal from "../../../components/modals/DialogModal";
-import StatusBadge from "../../../components/StatusBadge";
+import StatusBadge from "../../../components/badges/StatusBadge";
 import { camelCaseToSentenceCase } from "../../../libs/helper";
 
 export default function ViewUserDetailsModal({

@@ -14,7 +14,7 @@ import SearchInput from "../inputs/SearchInput";
 import MyPopoverMenu from "../MyPopoverMenu";
 
 import Pagination from "../pagination";
-import StatusBadge from "../StatusBadge";
+import StatusBadge from "../badges/StatusBadge";
 
 const TableHeader = ({ name, className = "px-3 py-3" }: any) => {
   return <th className={`${className} text-left`}>{name}</th>;
@@ -223,7 +223,7 @@ export default function AppTable({
                                 whenOpen: <BsChevronBarUp stroke={colors.white} fill={colors.white} />,
                                 whenHidden: <BsChevronBarDown stroke={colors.white} fill={colors.white} />
                               }}
-                              panelWidth="sm:w-1/2 w-1/5"
+                              panelWidth="sm:w-1/2 md:w-1/5"
                               listItems={actionButtonList?.map((items: any) => {
                                 return !(
                                   hasKey(items, "isVisible") &&

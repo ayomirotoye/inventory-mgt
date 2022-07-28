@@ -18,7 +18,7 @@ root.render(
         "position": 'top-center',
         duration: 5000,
         style: {
-          zIndex: 10005,
+          zIndex: 10100,
           position:"absolute"
         },
       }} />

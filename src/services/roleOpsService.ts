@@ -14,6 +14,18 @@ export const callGetRolesApi = async () => {
     return { data: {} };
   }
 };
+export const callGetMenusByRoleIdApi = async (roleId: string) => {
+  try {
+    const { data } = await httpService
+      .get(endpoints.menusByRoleIdEndpoint.concat("/", roleId))
+      .catch(() => {
+        return { data: {} };
+      });
+    return data ?? {};
+  } catch (err: any) {
+    return { data: {} };
+  }
+};
 
 export const callDeleteRolesApi = async (userId: string) => {
   try {

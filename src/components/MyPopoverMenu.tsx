@@ -6,7 +6,7 @@ import { hasKeys, isNullOrUndefined } from "../libs/helper";
 import MenuIconBars from "./icons/MenuIconBars";
 
 export default function MyPopoverMenu({
-    panelClassName = "p-5 bg-secondary-200",
+    panelClassName = "p-3 bg-secondary-200",
     listItems,
     panelWidth = "w-28",
     showTriggerComponent,

@@ -37,7 +37,7 @@ export default function DataMgt() {
   const handleCloseAddNewRoleModal = () => {
     setShowAddNewRoleModal(false);
   };
-  
+
   const [AssetData, setAssetData] = useState({
     requestType: {
       label: "",

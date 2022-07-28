@@ -15,4 +15,5 @@ export const endpoints = {
   fetchMenusEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/Menu`,
   deleteMenuEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/Menu`,
   addMenuEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}/api/Menu`,
+  menusByRoleIdEndpoint: `${process.env.REACT_APP_PUBLIC_API_BASE_URL}//api/Roles/getRoleMenus`
 };
