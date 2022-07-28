@@ -16,10 +16,10 @@ root.render(
     <Toaster
       toastOptions={{
         "position": 'top-center',
-        duration: 5000,
+        duration: 5000000,
         style: {
-          zIndex: 10100,
-          position:"absolute"
+          zIndex: 11000,
+          position:"relative"
         },
       }} />
     <App />

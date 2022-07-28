@@ -27,7 +27,7 @@ function DialogModal({
                 <div className="flex min-h-full items-center justify-center"></div>
                 <Dialog
                     as="div"
-                    className="fixed z-[10050] inset-0 overflow-y-auto mx-2"
+                    className="fixed z-[1005] inset-0 overflow-y-auto mx-2"
                     initialFocus={cancelButtonRef}
                     onClose={onClosed}
                 >
