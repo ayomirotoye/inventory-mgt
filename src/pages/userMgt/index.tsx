@@ -89,6 +89,7 @@ export default function UserMgt({ }: any) {
 
   const fetchUsers = () => {
     callGetUsersApi().then((response: any) => {
+      console.log("response:::", response);
       if (Array.isArray(response)) {
         setDataList(response);
       }
@@ -114,6 +115,9 @@ export default function UserMgt({ }: any) {
         currentPage={currentPage}
         totalCount={dataList.length}
         PageSize={PageSize}
+        ignoreFields={
+          ["userRole"]
+        }
         onPageChange={(page: number) => setCurrentPage(page)}
         headerList={{
           sn: "S/N",
@@ -264,7 +268,7 @@ export default function UserMgt({ }: any) {
             setShowViewUserDetailsModal(false);
           }}
           data={currentUserData}
-          
+
         />
       )}
 

@@ -45,7 +45,7 @@ export default function AppTable({
   keyField,
   needsEmphasis = {},
   isSelectable = true,
-  onViewDetails,
+  onViewDetails
 }: any) {
   const [tableDiv, setTableDiv] = useState(Object.assign([]));
 
@@ -241,34 +241,6 @@ export default function AppTable({
                                   : null;
                               })}
                             />
-                            {/* <MyPopover
-                              showAs="div"
-                              panelClassName="p-3 bg-secondary-200"
-                              panelWidth="w-40"
-                              showContent={
-                                <PrimaryButton className="w-14 font-bold bg-primary-900 text-white rounded-lg border-0 cursor-pointer mb-3">
-                                  <span className="flex justify-center">
-                                    <ChevronDownIcon className="w-5 h-5" />
-                                  </span>
-                                </PrimaryButton>
-                              }
-                              listItems={actionButtonList?.map((items: any) => {
-                                return !(
-                                  hasKey(items, "isVisible") &&
-                                  items.isVisible(
-                                    dataItems[items.visibilityConditionField]
-                                  )
-                                )
-                                  ? {
-                                      name: items.actionText,
-                                      onClick: items.handleClick,
-                                      hasIcon: items.hasIcon,
-                                      data: dataItems ,
-                                      isVisible: items.isUserActive,
-                                    }
-                                  : null;
-                              })}
-                            /> */}
                           </div>
                         </TableData>
                       );

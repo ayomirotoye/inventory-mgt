@@ -11,12 +11,13 @@ export const callUserLoginApi = async (_data: any) => {
             const errBody = handleMyErrors(err);
             return { data: errBody }
         });
+        console.log("datata:::", data);
         if (isSuccessful(data?.responseCode)) {
             // const jwtToken = data?.token;
             // const refreshToken = data.refreshToken;
             // tokenPersistenceFlow(jwtToken, refreshToken);
             sessionStorage.setItem("isLoggedIn", "true");
-            sessionStorage.setItem("userDetails", JSON.stringify(data.profile));
+            sessionStorage.setItem("userDetails", JSON.stringify(data.data.profile));
         }
         return data;
 

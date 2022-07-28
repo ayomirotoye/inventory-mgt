@@ -1,9 +1,9 @@
 import { format } from "date-fns";
 import { Fragment } from "react";
+import StatusBadge from "../../../components/badges/StatusBadge";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import DialogModal from "../../../components/modals/DialogModal";
-import StatusBadge from "../../../components/badges/StatusBadge";
-import { camelCaseToSentenceCase } from "../../../libs/helper";
+import { camelCaseToSentenceCase, isObject } from "../../../libs/helper";
 
 export default function ViewUserDetailsModal({
   handleClose,
@@ -38,12 +38,12 @@ export default function ViewUserDetailsModal({
         <div className="basis-5/6">
           {
             Object.entries(data).map(([key, value]: any, index: number) => {
-              return <Fragment key={`userdetailsdata_${index}`}>
+              return !isObject(value) ? <Fragment key={`userdetailsdata_${index}`}>
                 <div className="grid grid-cols-12 border-b-2 border-primary-900 py-1">
                   <div className="col-span-4 font-semibold">{camelCaseToSentenceCase(key)}</div>
                   <div className="col-span-8 truncate text-right">{(key !== "createdDate" && key !== "status") ? value : key === "createdDate" ? format(new Date(value), "LLLL") : <StatusBadge />}</div>
                 </div>
-              </Fragment>
+              </Fragment> : []
             })
           }
         </div>
