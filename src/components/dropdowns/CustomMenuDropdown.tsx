@@ -35,7 +35,7 @@ export default function CustomMenuDropdown({ menuList }: any) {
                             <span>{menuList.menuTitle}</span>
                             <BsChevronBarDown strokeWidth={1} fill={colors.black} className="mt-2" /></div>
                     }}
-                    panelWidth="sm:w-1/2 w-1/5"
+                    panelWidth="sm:w-1/2 md:w-1/5"
                     listItems={menuList.menuData}
                     elementClassName="m-2 bg-none rounded-lg"
                 />
@@ -44,7 +44,7 @@ export default function CustomMenuDropdown({ menuList }: any) {
                     <Link to={menuList?.link}>
                         {hasKeys(menuList.hasIcon ?? {}) ? menuList.hasIcon.icon : <MenuIconBars className='h-5 w-5' />}
                     </Link>
-                    <div className='hidden sm:block truncate hover:text-red-900 focus:text-red-900'
+                    <div className='hidden sm:block truncate'
                         onClick={() => navigate(menuList?.link)}>
                         {menuList?.menuTitle}
                     </div>

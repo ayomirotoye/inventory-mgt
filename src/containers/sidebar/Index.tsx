@@ -1,6 +1,6 @@
 import { theme } from "../../tailwind.config";
 import { urlPaths } from "../../common/urlPaths";
-import MenuDropdown from "../../components/dropdowns/CustomMenuDropdown";
+import CustomMenuDropdown from "../../components/dropdowns/CustomMenuDropdown";
 import { AdminIcon } from "../../components/icons/AdminIcon";
 import { DashboardIcon } from "../../components/icons/DashboardIcon";
 import { EyeIcon } from "../../components/icons/EyeIcon";
@@ -236,7 +236,7 @@ export default function Sidebar() {
               key={`menudropdown_${items?.menuTitle}_${index}`}
               id={`menudropdown_${items.menuTitle}_${index}`}
             >
-              <MenuDropdown menuList={items} />
+              <CustomMenuDropdown menuList={items} />
             </div>
           );
         })}
